@@ -1,0 +1,132 @@
+Benchmark Script: 
+#! /bin/bash
+echo "Benchmark Script: "
+cat run.sh
+echo ""
+echo "Spec File contents:"
+cat cvmfs-spec/cernvm-prod.cern.ch.spec.txt
+echo ""
+echo "Config file contents:"
+cat cvmfs-config.config
+echo ""
+
+CVMFS_BASE=`pwd`"/../cvmfs"
+TMP_BASE="/home/samuel/benchmark/tmp"
+
+# Make shrinkwrap accessible
+source env.sh
+echo $PATH
+
+run_shrinkwrap() {
+  # run_shrinkwrap [num_threads] [run_log]
+  $(echo "$CVMFS_BASE")/cvmfs/shrinkwrap/scripts/build.sh --spec_dir=cvmfs-spec --cvmfs_config=cvmfs-config.config --dest_base=$TMP_BASE/cvmfs/cvmfs --dest_data=$TMP_BASE/cvmfs/cvmfs/.data --threads=$1 >> $2
+}
+
+run_rsync() {
+  ls /cvmfs/cernvm-prod.cern.ch > /dev/null
+  rsync -a \
+    --relative --prune-empty-dirs \
+    --include='/' \
+    --include='/cvmfs/' \
+    --include='/cvmfs/cernvm-prod.cern.ch/'\
+    --include='/cvmfs/cernvm-prod.cern.ch/cvm4/'\
+    --include='/cvmfs/cernvm-prod.cern.ch/cvm4/usr'\
+    --include='/cvmfs/cernvm-prod.cern.ch/cvm4/usr/lib64'\
+    --include='/cvmfs/cernvm-prod.cern.ch/cvm4/usr/lib64/***' \
+    --exclude '*' \
+    /cvmfs $TMP_BASE/cvmfs >> $1
+}
+
+run_test() {
+  # run_test [num of runs] [num of threads] [run log]
+  echo "*** Testing command '$2' with $1 runs..." >> $3
+  echo "*** Testing command '$2' with $1 runs..."
+  SIZES=()
+  TIMES=()
+  SUM=0
+  for i in $(eval echo {1..$1});
+  do
+    echo "*** Starting run $i" >> $3
+    sync
+    echo 3 > /proc/sys/vm/drop_caches
+    rm -rf $TMP_BASE/cvmfs
+    START=$(date +%s.%N)
+    eval $2
+    sync
+    END=$(date +%s.%N)
+    DIFF=$(echo "$END - $START" | bc)
+    SIZES[$i]=$(du -sh $TMP_BASE/cvmfs/cvmfs)
+    TIMES[$i]=$DIFF
+    SUM=$(echo "$SUM + $DIFF" | bc)
+    echo "*** Cleaning up run $i" >> $3
+    rm -rf $TMP_BASE/cvmfs
+  done
+  echo "Sizes: ${SIZES[@]}"
+  echo "Times: ${TIMES[@]}"
+  echo "Average: $(echo "$SUM / $1" | bc -l)"
+}
+
+main() {
+  # main [run log] > bench log
+  echo "****** Starting Benchmark ******"
+  echo "*** Cleaning up if necessary..." > $1
+  #rm -rf $TMP_BASE/cvmfs
+  #echo "*** Preloading cvmfs cache (rsync)" >> $1
+  #service autofs restart
+  #run_rsync $1
+  #run_test 16 "run_rsync $1" $1
+
+  echo "*** Preloading cvmfs shrinkwrap cache" >> $1
+  run_shrinkwrap 32 $1
+  rm -rf $TMP_BASE/cvmfs
+
+  run_test 16 "run_shrinkwrap 1 $1" $1
+  run_test 16 "run_shrinkwrap 4 $1" $1
+  run_test 16 "run_shrinkwrap 8 $1" $1
+  run_test 16 "run_shrinkwrap 16 $1" $1
+  run_test 16 "run_shrinkwrap 32 $1" $1
+  run_test 16 "run_shrinkwrap 64 $1" $1
+  echo "****** Benchmark ended successfully ******"
+}
+
+main $@
+
+Spec File contents:
+^/*
+^/cvm4/*'
+/cvm4/usr/lib64/*
+
+Config file contents:
+CVMFS_CACHE_BASE=/var/lib/cvmfs/shrinkwrap
+CVMFS_CLAIM_OWNERSHIP=yes
+CVMFS_CONFIG_REPOSITORY=cvmfs-config.cern.ch
+CVMFS_SERVER_URL="http://cvmfs-stratum-zero-hpc.cern.ch/cvmfs/@fqrn@;http://cvmfs-stratum-one.cern.ch/cvmfs/@fqrn@;http://cvmfs-s1bnl.opensciencegrid.org:8000/cvmfs/@fqrn@"
+CVMFS_KEYS_DIR=/etc/cvmfs/keys/cern.ch
+CVMFS_HTTP_PROXY=DIRECT
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/home/samuel/benchmark/../cvmfs/build/cvmfs/
+****** Starting Benchmark ******
+*** Testing command 'run_shrinkwrap 1 run.log' with 16 runs...
+Sizes: 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 15.551310941 16.141338313 15.290805610 15.556644243 15.511332734 23.270968467 30.731345990 35.680469401 33.598526124 33.388091241 34.771475154 34.444484966 35.385819936 34.558047066 35.024261152 35.665145295
+Average: 27.78562916456250000000
+*** Testing command 'run_shrinkwrap 4 run.log' with 16 runs...
+Sizes: 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 23.024543227 22.238641268 22.639082792 23.097386484 23.832880685 23.230660462 24.421626998 23.964662134 23.774851275 24.742814968 23.569634877 24.441676307 23.669693913 23.993032418 24.500641141 24.084590573
+Average: 23.70165122012500000000
+*** Testing command 'run_shrinkwrap 8 run.log' with 16 runs...
+Sizes: 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 21.617057801 23.122304035 22.121633214 22.912803913 22.862562728 23.166043517 23.432835558 22.649274711 22.731739316 21.856148584 23.113687067 24.299566182 23.609166396 23.254591518 22.847310017 24.344835065
+Average: 22.99634747637500000000
+*** Testing command 'run_shrinkwrap 16 run.log' with 16 runs...
+Sizes: 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 23.595057365 23.163668646 22.791492885 22.632815988 23.076935667 20.975190840 20.717117286 20.772697094 19.551966040 20.342162578 20.533570862 20.493598752 23.912737621 23.537622188 25.303267676 23.921677177
+Average: 22.20759866656250000000
+*** Testing command 'run_shrinkwrap 32 run.log' with 16 runs...
+Sizes: 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 25.217536675 23.646900768 23.916217693 26.295449873 24.437727284 23.934411707 23.352732893 24.272240561 24.650536946 25.084829483 23.162494531 23.139945899 24.914529020 24.468200857 22.995001181 24.361131504
+Average: 24.24061792968750000000
+*** Testing command 'run_shrinkwrap 64 run.log' with 16 runs...
+Sizes: 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs 1.6G	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 24.529864980 24.114066383 23.289543309 23.900543150 22.212035886 24.804721138 23.022023657 23.934261118 24.581746714 24.457298767 23.692522506 24.006377269 24.172432015 24.350857344 23.637051537 24.579368613
+Average: 23.95529464912500000000
+****** Benchmark ended successfully ******

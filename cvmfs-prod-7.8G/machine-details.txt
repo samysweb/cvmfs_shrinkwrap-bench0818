@@ -1,0 +1,122 @@
+﻿[~]# lscpu
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                16
+On-line CPU(s) list:   0-15
+Thread(s) per core:    2
+Core(s) per socket:    8
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 85
+Model name:            Intel(R) Core(TM) i7-7820X CPU @ 3.60GHz
+Stepping:              4
+CPU MHz:               1527.890
+CPU max MHz:           4500,0000
+CPU min MHz:           1200,0000
+BogoMIPS:              7500.00
+Virtualization:        VT-x
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              1024K
+L3 cache:              11264K
+NUMA node0 CPU(s):     0-15
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb cat_l3 cdp_l3 intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm cqm mpx rdt_a avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts hwp hwp_act_window hwp_epp hwp_pkg_req
+[~]# cat /proc/meminfo
+MemTotal:       65465280 kB
+MemFree:        51692648 kB
+MemAvailable:   63981428 kB
+Buffers:          625920 kB
+Cached:         11593536 kB
+SwapCached:            0 kB
+Active:          3013288 kB
+Inactive:        9345720 kB
+Active(anon):     142160 kB
+Inactive(anon):   172792 kB
+Active(file):    2871128 kB
+Inactive(file):  9172928 kB
+Unevictable:       10896 kB
+Mlocked:           10896 kB
+SwapTotal:      32834556 kB
+SwapFree:       32834556 kB
+Dirty:                 0 kB
+Writeback:             0 kB
+AnonPages:        150472 kB
+Mapped:            49276 kB
+Shmem:            173096 kB
+Slab:             891368 kB
+SReclaimable:     782768 kB
+SUnreclaim:       108600 kB
+KernelStack:        6400 kB
+PageTables:         8048 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    65567196 kB
+Committed_AS:    1073336 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      439056 kB
+VmallocChunk:   34358921212 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:     36864 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      191824 kB
+DirectMap2M:     8910848 kB
+DirectMap1G:    57671680 kB
+[~]# cat /proc/version
+Linux version 3.10.0-693.5.2.el7.x86_64 (builder@kbuilder.dev.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-16) (GCC) ) #1 SMP Fri Oct 20 20:32:50 UTC 2017
+~]# lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
+sda           8:0    0 931,5G  0 disk
+└─md126       9:126  0   1,8T  0 raid5
+  ├─md126p1 259:0    0   200M  0 md    /boot/efi
+  ├─md126p2 259:1    0   500M  0 md    /boot
+  ├─md126p3 259:2    0   1,8T  0 md    /home
+  ├─md126p4 259:3    0    50G  0 md    /
+  └─md126p5 259:4    0  31,3G  0 md    [SWAP]
+sdb           8:16   0 931,5G  0 disk
+└─md126       9:126  0   1,8T  0 raid5
+  ├─md126p1 259:0    0   200M  0 md    /boot/efi
+  ├─md126p2 259:1    0   500M  0 md    /boot
+  ├─md126p3 259:2    0   1,8T  0 md    /home
+  ├─md126p4 259:3    0    50G  0 md    /
+  └─md126p5 259:4    0  31,3G  0 md    [SWAP]
+sdc           8:32   0 931,5G  0 disk
+└─md126       9:126  0   1,8T  0 raid5
+  ├─md126p1 259:0    0   200M  0 md    /boot/efi
+  ├─md126p2 259:1    0   500M  0 md    /boot
+  ├─md126p3 259:2    0   1,8T  0 md    /home
+  ├─md126p4 259:3    0    50G  0 md    /
+  └─md126p5 259:4    0  31,3G  0 md    [SWAP]
+[~]# mdadm -D /dev/md126
+/dev/md126:
+         Container : /dev/md/imsm0, member 0
+        Raid Level : raid5
+        Array Size : 1953519616 (1863.02 GiB 2000.40 GB)
+     Used Dev Size : 976759808 (931.51 GiB 1000.20 GB)
+      Raid Devices : 3
+     Total Devices : 3
+
+             State : active
+    Active Devices : 3
+   Working Devices : 3
+    Failed Devices : 0
+     Spare Devices : 0
+
+            Layout : left-asymmetric
+        Chunk Size : 32K
+
+Consistency Policy : resync
+
+
+              UUID : 3cfd6ed8:a5f12e31:5c20fbe6:dc86dc74
+    Number   Major   Minor   RaidDevice State
+       2       8        0        0      active sync   /dev/sda
+       1       8       16        1      active sync   /dev/sdb
+       0       8       32        2      active sync   /dev/sdc

@@ -1,0 +1,577 @@
+Benchmark Script: 
+#! /bin/bash
+echo "Benchmark Script: "
+cat run.sh
+echo ""
+echo "Spec File contents:"
+cat cvmfs-spec/cernvm-prod.cern.ch.spec.txt
+echo ""
+echo "Config file contents (shrinkwrap):"
+cat cvmfs-config.config
+echo ""
+echo "Config for repository: "
+#cat /etc/cvmfs/default.local
+cvmfs_config showconfig cernvm-prod.cern.ch
+echo ""
+
+CVMFS_BASE=`pwd`"/../cvmfs"
+TMP_BASE="/home/samuel/benchmark/tmp"
+# Make shrinkwrap accessible
+source env.sh
+echo $PATH
+
+CUR_BASE=`pwd`
+
+
+run_shrinkwrap() {
+  # run_shrinkwrap [num_threads] [run_log]
+  $(echo "$CVMFS_BASE")/cvmfs/shrinkwrap/scripts/build.sh --spec_dir=cvmfs-spec --cvmfs_config=cvmfs-config.config --dest_base=$TMP_BASE/cvmfs/cvmfs --dest_data=$TMP_BASE/cvmfs/cvmfs/.data --threads=$1 >> $2
+}
+
+run_rsync() {
+  ls /cvmfs/cernvm-prod.cern.ch > /dev/null
+  rsync -a -v \
+    --relative --prune-empty-dirs \
+    --include='/' \
+    --include='/cvmfs/' \
+    --include='/cvmfs/cernvm-prod.cern.ch/'\
+    --include='/cvmfs/cernvm-prod.cern.ch/cvm4/'\
+    --include='/cvmfs/cernvm-prod.cern.ch/cvm4/usr'\
+    --include='/cvmfs/cernvm-prod.cern.ch/cvm4/usr/***' \
+    --exclude '*' \
+    /cvmfs $TMP_BASE/cvmfs >> $1
+}
+
+run_test() {
+  # run_test [num of runs] [num of threads] [run log]
+  echo "*** Testing command '$2' with $1 runs..." >> $3
+  echo "*** Testing command '$2' with $1 runs..."
+  SIZES=()
+  TIMES=()
+  SUM=0
+  for i in $(eval echo {1..$1});
+  do
+    echo "*** Starting run $i" >> $3
+    sync
+    echo 3 > /proc/sys/vm/drop_caches
+    rm -rf $TMP_BASE/cvmfs
+    START=$(date +%s.%N)
+    eval $2
+    sync
+    END=$(date +%s.%N)
+    DIFF=$(echo "$END - $START" | bc)
+    echo "Time of current run: $DIFF"
+    SIZES[$i]=$(du -s $TMP_BASE/cvmfs/cvmfs)
+    TIMES[$i]=$DIFF
+    SUM=$(echo "$SUM + $DIFF" | bc)
+    echo "*** Cleaning up run $i" >> $3
+    rm -rf $TMP_BASE/cvmfs
+  done
+  echo "Sizes: ${SIZES[@]}"
+  echo "Times: ${TIMES[@]}"
+  echo "Average: $(echo "$SUM / $1" | bc -l)"
+}
+
+main() {
+  # main [run log] > bench log
+  echo "****** Starting Benchmark ******"
+  echo "*** Cleaning up if necessary..." > $1
+  
+  
+  rm -rf $TMP_BASE/cvmfs
+  #service autofs restart
+ 
+  echo "*** Changing to increased buffer version of shrinkwrap"
+  cd $CVMFS_BASE
+  git checkout feature-fs-traversal-interface-buffersize-experiment
+  cd $CVMFS_BASE"/build"
+  make 
+  git status
+  git rev-parse HEAD
+  cd $CUR_BASE
+  echo "*** Preloading cvmfs cache" >> $1
+  time run_shrinkwrap 32 $1 2>&1
+  rm -rf $TMP_BASE/cvmfs
+
+  run_test 16 "run_shrinkwrap 32 $1" $1
+  run_test 16 "run_shrinkwrap 16 $1" $1
+  run_test 16 "run_shrinkwrap 8 $1" $1
+  run_test 16 "run_shrinkwrap 4 $1" $1
+  run_test 16 "run_shrinkwrap 1 $1" $1
+  run_test 16 "run_shrinkwrap 128 $1" $1
+  run_test 16 "run_shrinkwrap 64 $1" $1 
+
+  echo "*** Changing to standard version of shrinkwrap"
+  cd $CVMFS_BASE
+  git checkout feature-fs-traversal-interface >> $1
+  cd $CVMFS_BASE"/build"
+  make
+  git status
+  git rev-parse HEAD
+  cd $CUR_BASE
+  
+  echo "*** Preloading cvmfs cache" >> $1
+  time run_shrinkwrap 32 $1 2>&1 >> $1
+  rm -rf $TMP_BASE/cvmfs
+
+
+  run_test 16 "run_shrinkwrap 32 $1" $1
+  run_test 16 "run_shrinkwrap 16 $1" $1
+  run_test 16 "run_shrinkwrap 8 $1" $1
+  run_test 16 "run_shrinkwrap 4 $1" $1
+  run_test 16 "run_shrinkwrap 1 $1" $1
+  run_test 16 "run_shrinkwrap 128 $1" $1
+  run_test 16 "run_shrinkwrap 64 $1" $1
+  
+  #rm -rf $TMP_BASE/cvmfs
+  #echo "*** Running 4 times with rsync"
+  #service autofs restart
+  #time run_rsync $1 2>&1 > $1
+  #echo "*** Cache is already preloaded:"
+  #du -s /var/lib/cvmfs/shared
+  #run_test 16 "run_rsync $1" $1
+
+  rm -rf $TMP_BASE/cvmfs
+ 
+  echo "****** Benchmark ended successfully ******"
+}
+
+main $@
+
+Spec File contents:
+^/*
+^/cvm4/*'
+/cvm4/usr/*
+
+Config file contents (shrinkwrap):
+CVMFS_CACHE_BASE=/var/lib/cvmfs/shrinkwrap
+CVMFS_CLAIM_OWNERSHIP=yes
+CVMFS_CONFIG_REPOSITORY=cvmfs-config.cern.ch
+CVMFS_SERVER_URL="http://cvmfs-stratum-zero-hpc.cern.ch/cvmfs/@fqrn@;http://cvmfs-stratum-one.cern.ch/cvmfs/@fqrn@;http://cvmfs-s1bnl.opensciencegrid.org:8000/cvmfs/@fqrn@"
+CVMFS_KEYS_DIR=/etc/cvmfs/keys/cern.ch
+CVMFS_HTTP_PROXY=DIRECT
+
+Config for repository: 
+CVMFS_REPOSITORY_NAME=cernvm-prod.cern.ch
+CERNVM_GRID_UI_VERSION=
+CVMFS_ALIEN_CACHE=
+CVMFS_ALT_ROOT_PATH=
+CVMFS_AUTHZ_HELPER=
+CVMFS_AUTHZ_SEARCH_PATH=
+CVMFS_AUTO_UPDATE=
+CVMFS_BACKOFF_INIT=2    # from /etc/cvmfs/default.conf
+CVMFS_BACKOFF_MAX=10    # from /etc/cvmfs/default.conf
+CVMFS_BASE_ENV=1    # from /etc/cvmfs/default.conf
+CVMFS_CACHE_BASE=/var/lib/cvmfs    # from /etc/cvmfs/default.conf
+CVMFS_CACHE_DIR=/var/lib/cvmfs/shared
+CVMFS_CACHE_PRIMARY=
+CVMFS_CHECK_PERMISSIONS=yes    # from /etc/cvmfs/default.conf
+CVMFS_CLAIM_OWNERSHIP=yes    # from /etc/cvmfs/default.conf
+CVMFS_CONFIG_REPO_REQUIRED=
+CVMFS_CONFIG_REPOSITORY=cvmfs-config.cern.ch    # from /etc/cvmfs/default.d/50-cern.conf
+CVMFS_DEBUGLOG=
+CVMFS_DEFAULT_DOMAIN=cern.ch    # from /etc/cvmfs/default.d/50-cern.conf
+CVMFS_DNS_RETRIES=
+CVMFS_DNS_TIMEOUT=
+CVMFS_EXTERNAL_FALLBACK_PROXY=
+CVMFS_EXTERNAL_HTTP_PROXY=
+CVMFS_EXTERNAL_SERVER_URL=
+CVMFS_EXTERNAL_TIMEOUT=
+CVMFS_EXTERNAL_TIMEOUT_DIRECT=
+CVMFS_FALLBACK_PROXY=
+CVMFS_FOLLOW_REDIRECTS=
+CVMFS_HIDE_MAGIC_XATTRS=
+CVMFS_HOST_RESET_AFTER=1800    # from /etc/cvmfs/default.conf
+CVMFS_HTTP_PROXY=DIRECT    # from /etc/cvmfs/default.local
+CVMFS_IGNORE_SIGNATURE=no    # from /etc/cvmfs/default.conf
+CVMFS_INITIAL_GENERATION=
+CVMFS_IPFAMILY_PREFER=
+CVMFS_KCACHE_TIMEOUT=
+CVMFS_KEYS_DIR=/etc/cvmfs/keys/cern.ch    # from /etc/cvmfs/domain.d/cern.ch.conf
+CVMFS_LOW_SPEED_LIMIT=1024    # from /etc/cvmfs/default.conf
+CVMFS_MAX_IPADDR_PER_PROXY=
+CVMFS_MAX_RETRIES=1    # from /etc/cvmfs/default.conf
+CVMFS_MAX_TTL=
+CVMFS_MEMCACHE_SIZE=
+CVMFS_MOUNT_DIR=/cvmfs    # from /etc/cvmfs/default.conf
+CVMFS_MOUNT_RW=no    # from /etc/cvmfs/default.conf
+CVMFS_NFILES=65536    # from /etc/cvmfs/default.conf
+CVMFS_NFS_SHARED=
+CVMFS_NFS_SOURCE=no    # from /etc/cvmfs/default.conf
+CVMFS_OOM_SCORE_ADJ=
+CVMFS_PAC_URLS=http://wpad/wpad.dat    # from /etc/cvmfs/default.conf
+CVMFS_PROXY_RESET_AFTER=300    # from /etc/cvmfs/default.conf
+CVMFS_PROXY_TEMPLATE=
+CVMFS_PUBLIC_KEY=
+CVMFS_QUOTA_LIMIT=16000    # from /etc/cvmfs/default.local
+CVMFS_RELOAD_SOCKETS=/var/run/cvmfs    # from /etc/cvmfs/default.conf
+CVMFS_REPOSITORIES=
+CVMFS_REPOSITORY_DATE=
+CVMFS_REPOSITORY_TAG=
+CVMFS_ROOT_HASH=
+CVMFS_SEND_INFO_HEADER=no    # from /etc/cvmfs/default.conf
+CVMFS_SERVER_CACHE_MODE=
+CVMFS_SERVER_URL='http://cvmfs-stratum-zero-hpc.cern.ch/cvmfs/cernvm-prod.cern.ch;http://cvmfs-stratum-one.cern.ch/cvmfs/cernvm-prod.cern.ch;http://cvmfs-s1bnl.opensciencegrid.org:8000/cvmfs/cernvm-prod.cern.ch'    # from /etc/cvmfs/domain.d/cern.ch.local
+CVMFS_SHARED_CACHE=yes    # from /etc/cvmfs/default.conf
+CVMFS_STRICT_MOUNT=no    # from /etc/cvmfs/default.conf
+CVMFS_SYSLOG_FACILITY=
+CVMFS_SYSLOG_LEVEL=
+CVMFS_SYSTEMD_NOKILL=
+CVMFS_TIMEOUT=5    # from /etc/cvmfs/default.conf
+CVMFS_TIMEOUT_DIRECT=10    # from /etc/cvmfs/default.conf
+CVMFS_TRACEFILE=
+CVMFS_TRUSTED_CERTS=
+CVMFS_USE_GEOAPI=yes    # from /etc/cvmfs/domain.d/cern.ch.conf
+CVMFS_USER=cvmfs    # from /etc/cvmfs/default.conf
+CVMFS_WORKSPACE=
+
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/home/samuel/benchmark/../cvmfs/build/cvmfs/
+****** Starting Benchmark ******
+*** Changing to increased buffer version of shrinkwrap
+[  2%] Built target cvmfs2
+[  3%] Built target cvmfs_allow_helper
+[  3%] Built target cache.pb.generated
+[  6%] Built target cvmfs_cache_only
+[  6%] Built target libcvmfs_cache
+[  6%] Built target cvmfs_cache_null
+[  7%] Built target cvmfs_cache_ram
+[  8%] Built target cvmfs_deny_helper
+[ 10%] Built target cvmfs_fsck
+[ 24%] Built target cvmfs_fuse
+[ 39%] Built target cvmfs_fuse_debug
+[ 52%] Built target cvmfs_only
+[ 68%] Built target cvmfs_receiver
+[ 68%] Generating the cvmfs_server script
+[ 68%] Built target cvmfs_server
+[ 68%] Built target libcvmfs
+[ 71%] Built target cvmfs_shrinkwrap
+[ 76%] Built target cvmfs_stratum_agent
+[ 76%] Built target cvmfs_suid_helper
+[ 98%] Built target cvmfs_swissknife
+[ 99%] Built target test_libcvmfs
+[ 99%] Built target auto.cvmfs
+[100%] Built target mount.cvmfs
+# On branch feature-fs-traversal-interface-buffersize-experiment
+nothing to commit, working directory clean
+2842740d064c69b492ed6f2383b3f39d457d869f
+*** Testing command 'run_shrinkwrap 32 run-10G-shrinkwrap-final.log' with 16 runs...
+Time of current run: 108.418881616
+Time of current run: 157.843217150
+Time of current run: 160.386097010
+Time of current run: 161.287586965
+Time of current run: 163.542194954
+Time of current run: 157.868341150
+Time of current run: 160.538936139
+Time of current run: 164.054579808
+Time of current run: 163.364623399
+Time of current run: 163.642128611
+Time of current run: 161.117969207
+Time of current run: 160.527598512
+Time of current run: 161.272817719
+Time of current run: 155.053942340
+Time of current run: 161.395798298
+Time of current run: 163.389296846
+Sizes: 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 108.418881616 157.843217150 160.386097010 161.287586965 163.542194954 157.868341150 160.538936139 164.054579808 163.364623399 163.642128611 161.117969207 160.527598512 161.272817719 155.053942340 161.395798298 163.389296846
+Average: 157.73150060775000000000
+*** Testing command 'run_shrinkwrap 16 run-10G-shrinkwrap-final.log' with 16 runs...
+Time of current run: 162.139441008
+Time of current run: 163.295179341
+Time of current run: 157.860266825
+Time of current run: 161.479539137
+Time of current run: 161.939382687
+Time of current run: 162.868012221
+Time of current run: 153.518677287
+Time of current run: 160.361489480
+Time of current run: 163.360174650
+Time of current run: 156.384902030
+Time of current run: 156.955899769
+Time of current run: 159.022248340
+Time of current run: 153.796107866
+Time of current run: 163.799985186
+Time of current run: 158.139862095
+Time of current run: 163.706214954
+Sizes: 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 162.139441008 163.295179341 157.860266825 161.479539137 161.939382687 162.868012221 153.518677287 160.361489480 163.360174650 156.384902030 156.955899769 159.022248340 153.796107866 163.799985186 158.139862095 163.706214954
+Average: 159.91421142975000000000
+*** Testing command 'run_shrinkwrap 8 run-10G-shrinkwrap-final.log' with 16 runs...
+Time of current run: 165.610990934
+Time of current run: 165.786661976
+Time of current run: 161.489782005
+Time of current run: 164.500324818
+Time of current run: 166.975491130
+Time of current run: 165.903558367
+Time of current run: 163.764185045
+Time of current run: 161.318369399
+Time of current run: 159.464393145
+Time of current run: 164.196697348
+Time of current run: 164.831714465
+Time of current run: 163.084415897
+Time of current run: 159.600441495
+Time of current run: 162.170103594
+Time of current run: 163.110903877
+Time of current run: 165.769519430
+Sizes: 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 165.610990934 165.786661976 161.489782005 164.500324818 166.975491130 165.903558367 163.764185045 161.318369399 159.464393145 164.196697348 164.831714465 163.084415897 159.600441495 162.170103594 163.110903877 165.769519430
+Average: 163.59859705781250000000
+*** Testing command 'run_shrinkwrap 4 run-10G-shrinkwrap-final.log' with 16 runs...
+Time of current run: 174.502042061
+Time of current run: 181.478743474
+Time of current run: 182.434476680
+Time of current run: 176.320489155
+Time of current run: 178.634207726
+Time of current run: 174.808777675
+Time of current run: 179.696983875
+Time of current run: 177.294947981
+Time of current run: 184.385585428
+Time of current run: 181.249164734
+Time of current run: 173.754789272
+Time of current run: 178.586257626
+Time of current run: 179.541521948
+Time of current run: 177.913871184
+Time of current run: 177.029899440
+Time of current run: 183.090460180
+Sizes: 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 174.502042061 181.478743474 182.434476680 176.320489155 178.634207726 174.808777675 179.696983875 177.294947981 184.385585428 181.249164734 173.754789272 178.586257626 179.541521948 177.913871184 177.029899440 183.090460180
+Average: 178.79513865243750000000
+*** Testing command 'run_shrinkwrap 1 run-10G-shrinkwrap-final.log' with 16 runs...
+Time of current run: 290.648996830
+Time of current run: 288.835955433
+Time of current run: 290.846722714
+Time of current run: 293.575485734
+Time of current run: 297.068867273
+Time of current run: 295.983490709
+Time of current run: 293.886099127
+Time of current run: 292.504887378
+Time of current run: 285.740342552
+Time of current run: 293.499275154
+Time of current run: 292.653538708
+Time of current run: 296.148566965
+Time of current run: 289.470200024
+Time of current run: 295.304848591
+Time of current run: 287.125666225
+Time of current run: 291.986548550
+Sizes: 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 290.648996830 288.835955433 290.846722714 293.575485734 297.068867273 295.983490709 293.886099127 292.504887378 285.740342552 293.499275154 292.653538708 296.148566965 289.470200024 295.304848591 287.125666225 291.986548550
+Average: 292.20496824793750000000
+*** Testing command 'run_shrinkwrap 128 run-10G-shrinkwrap-final.log' with 16 runs...
+Time of current run: 155.209455313
+Time of current run: 156.004434202
+Time of current run: 158.624108385
+Time of current run: 165.238789059
+Time of current run: 159.806314094
+Time of current run: 164.755062815
+Time of current run: 161.737175476
+Time of current run: 160.614897731
+Time of current run: 162.795861399
+Time of current run: 158.526214242
+Time of current run: 156.415108929
+Time of current run: 162.697805693
+Time of current run: 161.109613162
+Time of current run: 162.699187201
+Time of current run: 156.784031508
+Time of current run: 164.003808335
+Sizes: 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 155.209455313 156.004434202 158.624108385 165.238789059 159.806314094 164.755062815 161.737175476 160.614897731 162.795861399 158.526214242 156.415108929 162.697805693 161.109613162 162.699187201 156.784031508 164.003808335
+Average: 160.43886672150000000000
+*** Testing command 'run_shrinkwrap 64 run-10G-shrinkwrap-final.log' with 16 runs...
+Time of current run: 163.388301542
+Time of current run: 163.219812853
+Time of current run: 161.089583863
+Time of current run: 161.384479345
+Time of current run: 159.488807463
+Time of current run: 164.141637419
+Time of current run: 156.540017522
+Time of current run: 159.035070675
+Time of current run: 162.358360395
+Time of current run: 164.647561040
+Time of current run: 160.405109111
+Time of current run: 161.400299092
+Time of current run: 153.102595675
+Time of current run: 166.623825375
+Time of current run: 170.663483600
+Time of current run: 164.320636816
+Sizes: 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 163.388301542 163.219812853 161.089583863 161.384479345 159.488807463 164.141637419 156.540017522 159.035070675 162.358360395 164.647561040 160.405109111 161.400299092 153.102595675 166.623825375 170.663483600 164.320636816
+Average: 161.98809886162500000000
+*** Changing to standard version of shrinkwrap
+[  2%] Built target cvmfs2
+[  3%] Built target cvmfs_allow_helper
+[  3%] Built target cache.pb.generated
+[  6%] Built target cvmfs_cache_only
+[  6%] Built target libcvmfs_cache
+[  6%] Built target cvmfs_cache_null
+[  7%] Built target cvmfs_cache_ram
+[  8%] Built target cvmfs_deny_helper
+[ 10%] Built target cvmfs_fsck
+[ 24%] Built target cvmfs_fuse
+[ 39%] Built target cvmfs_fuse_debug
+[ 52%] Built target cvmfs_only
+[ 68%] Built target cvmfs_receiver
+[ 68%] Generating the cvmfs_server script
+[ 68%] Built target cvmfs_server
+[ 68%] Built target libcvmfs
+Scanning dependencies of target cvmfs_shrinkwrap
+[ 68%] Building CXX object cvmfs/CMakeFiles/cvmfs_shrinkwrap.dir/shrinkwrap/fs_traversal.cc.o
+[ 68%] Building CXX object cvmfs/CMakeFiles/cvmfs_shrinkwrap.dir/shrinkwrap/posix/data_dir_mgmt.cc.o
+[ 68%] Building CXX object cvmfs/CMakeFiles/cvmfs_shrinkwrap.dir/shrinkwrap/posix/garbage_collector.cc.o
+[ 68%] Building CXX object cvmfs/CMakeFiles/cvmfs_shrinkwrap.dir/shrinkwrap/posix/helpers.cc.o
+[ 69%] Building CXX object cvmfs/CMakeFiles/cvmfs_shrinkwrap.dir/shrinkwrap/posix/interface.cc.o
+[ 69%] Building CXX object cvmfs/CMakeFiles/cvmfs_shrinkwrap.dir/shrinkwrap/fs_traversal_libcvmfs.cc.o
+[ 69%] Building CXX object cvmfs/CMakeFiles/cvmfs_shrinkwrap.dir/shrinkwrap/shrinkwrap.cc.o
+Linking CXX executable cvmfs_shrinkwrap
+[ 71%] Built target cvmfs_shrinkwrap
+[ 76%] Built target cvmfs_stratum_agent
+[ 76%] Built target cvmfs_suid_helper
+[ 98%] Built target cvmfs_swissknife
+[ 99%] Built target test_libcvmfs
+[ 99%] Built target auto.cvmfs
+[100%] Built target mount.cvmfs
+# On branch feature-fs-traversal-interface
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	../run-10G-shrinkwrap-final.log
+nothing added to commit but untracked files present (use "git add" to track)
+6e925f19d1267066950414939b54121dcd5c8665
+*** Testing command 'run_shrinkwrap 32 run-10G-shrinkwrap-final.log' with 16 runs...
+Time of current run: 164.783606093
+Time of current run: 166.347208765
+Time of current run: 161.966805574
+Time of current run: 163.694926613
+Time of current run: 164.378964090
+Time of current run: 165.801276534
+Time of current run: 169.141847366
+Time of current run: 159.280369699
+Time of current run: 163.855217348
+Time of current run: 167.813182067
+Time of current run: 171.281874193
+Time of current run: 164.181325729
+Time of current run: 159.617380316
+Time of current run: 162.083411021
+Time of current run: 165.198108356
+Time of current run: 165.778307540
+Sizes: 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156396	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 164.783606093 166.347208765 161.966805574 163.694926613 164.378964090 165.801276534 169.141847366 159.280369699 163.855217348 167.813182067 171.281874193 164.181325729 159.617380316 162.083411021 165.198108356 165.778307540
+Average: 164.70023820650000000000
+*** Testing command 'run_shrinkwrap 16 run-10G-shrinkwrap-final.log' with 16 runs...
+Time of current run: 160.494594818
+Time of current run: 163.522418857
+Time of current run: 166.246751286
+Time of current run: 167.142360836
+Time of current run: 168.975876612
+Time of current run: 165.731801453
+Time of current run: 162.421065695
+Time of current run: 159.763759177
+Time of current run: 167.468425980
+Time of current run: 164.177615215
+Time of current run: 168.815409732
+Time of current run: 160.793567927
+Time of current run: 160.511066864
+Time of current run: 166.114969145
+Time of current run: 165.835753166
+Time of current run: 166.941612701
+Sizes: 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 160.494594818 163.522418857 166.246751286 167.142360836 168.975876612 165.731801453 162.421065695 159.763759177 167.468425980 164.177615215 168.815409732 160.793567927 160.511066864 166.114969145 165.835753166 166.941612701
+Average: 164.68481559150000000000
+*** Testing command 'run_shrinkwrap 8 run-10G-shrinkwrap-final.log' with 16 runs...
+Time of current run: 166.416269723
+Time of current run: 166.405401225
+Time of current run: 172.053508391
+Time of current run: 164.150087999
+Time of current run: 175.701014829
+Time of current run: 171.401303702
+Time of current run: 165.314112770
+Time of current run: 167.115731578
+Time of current run: 164.977120279
+Time of current run: 170.014306669
+Time of current run: 168.457001621
+Time of current run: 164.462828984
+Time of current run: 165.926962251
+Time of current run: 168.047006432
+Time of current run: 169.364088529
+Time of current run: 171.334782172
+Sizes: 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 166.416269723 166.405401225 172.053508391 164.150087999 175.701014829 171.401303702 165.314112770 167.115731578 164.977120279 170.014306669 168.457001621 164.462828984 165.926962251 168.047006432 169.364088529 171.334782172
+Average: 168.19634544712500000000
+*** Testing command 'run_shrinkwrap 4 run-10G-shrinkwrap-final.log' with 16 runs...
+Time of current run: 189.632138214
+Time of current run: 184.523945954
+Time of current run: 184.109312413
+Time of current run: 181.401661924
+Time of current run: 181.130998031
+Time of current run: 183.795699425
+Time of current run: 189.517039731
+Time of current run: 185.606409850
+Time of current run: 189.161973317
+Time of current run: 180.651612500
+Time of current run: 184.247196626
+Time of current run: 188.037364943
+Time of current run: 191.129464507
+Time of current run: 185.810746200
+Time of current run: 194.040056426
+Time of current run: 182.944550954
+Sizes: 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 189.632138214 184.523945954 184.109312413 181.401661924 181.130998031 183.795699425 189.517039731 185.606409850 189.161973317 180.651612500 184.247196626 188.037364943 191.129464507 185.810746200 194.040056426 182.944550954
+Average: 185.98376068843750000000
+*** Testing command 'run_shrinkwrap 1 run-10G-shrinkwrap-final.log' with 16 runs...
+Time of current run: 310.680326954
+Time of current run: 309.931961529
+Time of current run: 305.798719216
+Time of current run: 306.857317686
+Time of current run: 312.863550183
+Time of current run: 321.682422275
+Time of current run: 312.943908897
+Time of current run: 312.524798498
+Time of current run: 304.017701264
+Time of current run: 318.032516469
+Time of current run: 314.040649669
+Time of current run: 308.804663201
+Time of current run: 319.305919321
+Time of current run: 309.164314551
+Time of current run: 310.176417483
+Time of current run: 316.383438426
+Sizes: 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 310.680326954 309.931961529 305.798719216 306.857317686 312.863550183 321.682422275 312.943908897 312.524798498 304.017701264 318.032516469 314.040649669 308.804663201 319.305919321 309.164314551 310.176417483 316.383438426
+Average: 312.07553910137500000000
+*** Testing command 'run_shrinkwrap 128 run-10G-shrinkwrap-final.log' with 16 runs...
+Time of current run: 159.920615762
+Time of current run: 164.882642207
+Time of current run: 157.082422367
+Time of current run: 160.373049757
+Time of current run: 161.771642156
+Time of current run: 163.908409173
+Time of current run: 162.173563315
+Time of current run: 163.628184763
+Time of current run: 161.337984168
+Time of current run: 158.891248579
+Time of current run: 160.024998251
+Time of current run: 147.861452592
+Time of current run: 155.612523502
+Time of current run: 161.791695643
+Time of current run: 155.767293957
+Time of current run: 156.427094432
+Sizes: 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 159.920615762 164.882642207 157.082422367 160.373049757 161.771642156 163.908409173 162.173563315 163.628184763 161.337984168 158.891248579 160.024998251 147.861452592 155.612523502 161.791695643 155.767293957 156.427094432
+Average: 159.46592628900000000000
+*** Testing command 'run_shrinkwrap 64 run-10G-shrinkwrap-final.log' with 16 runs...
+Time of current run: 161.173815372
+Time of current run: 156.794537783
+Time of current run: 159.617050823
+Time of current run: 162.035934468
+Time of current run: 159.156698640
+Time of current run: 160.601749405
+Time of current run: 161.991025524
+Time of current run: 154.448722788
+Time of current run: 160.831531369
+Time of current run: 159.119168950
+Time of current run: 161.265378074
+Time of current run: 163.657606406
+Time of current run: 157.790039095
+Time of current run: 157.566325677
+Time of current run: 161.780700829
+Time of current run: 158.154455605
+Sizes: 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156400	/home/samuel/benchmark/tmp/cvmfs/cvmfs 8156404	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 161.173815372 156.794537783 159.617050823 162.035934468 159.156698640 160.601749405 161.991025524 154.448722788 160.831531369 159.119168950 161.265378074 163.657606406 157.790039095 157.566325677 161.780700829 158.154455605
+Average: 159.74904630050000000000
+****** Benchmark ended successfully ******

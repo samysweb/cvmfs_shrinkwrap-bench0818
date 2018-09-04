@@ -1,0 +1,288 @@
+Benchmark Script: 
+#! /bin/bash
+echo "Benchmark Script: "
+cat run.sh
+echo ""
+echo "Spec File contents:"
+cat cvmfs-spec/cernvm-prod.cern.ch.spec.txt
+echo ""
+echo "Config file contents (shrinkwrap):"
+cat cvmfs-config.config
+echo ""
+echo "Config for repository: "
+#cat /etc/cvmfs/default.local
+cvmfs_config showconfig cernvm-prod.cern.ch
+echo ""
+
+CVMFS_BASE=`pwd`"/../cvmfs"
+TMP_BASE="/home/samuel/benchmark/tmp"
+# Make shrinkwrap accessible
+source env.sh
+echo $PATH
+
+CUR_BASE=`pwd`
+
+
+run_shrinkwrap() {
+  # run_shrinkwrap [num_threads] [run_log]
+  $(echo "$CVMFS_BASE")/cvmfs/shrinkwrap/scripts/build.sh --spec_dir=cvmfs-spec --cvmfs_config=cvmfs-config.config --dest_base=$TMP_BASE/cvmfs/cvmfs --dest_data=$TMP_BASE/cvmfs/cvmfs/.data --threads=$1 >> $2
+}
+
+run_rsync() {
+  ls /cvmfs/cernvm-prod.cern.ch > /dev/null
+  rsync -a -v \
+    --relative --prune-empty-dirs \
+    --include='/' \
+    --include='/cvmfs/' \
+    --include='/cvmfs/cernvm-prod.cern.ch/'\
+    --include='/cvmfs/cernvm-prod.cern.ch/cvm4/'\
+    --include='/cvmfs/cernvm-prod.cern.ch/cvm4/usr'\
+    --include='/cvmfs/cernvm-prod.cern.ch/cvm4/usr/***' \
+    --exclude '*' \
+    /cvmfs $TMP_BASE/cvmfs >> $1
+}
+
+run_test() {
+  # run_test [num of runs] [num of threads] [run log]
+  echo "*** Testing command '$2' with $1 runs..." >> $3
+  echo "*** Testing command '$2' with $1 runs..."
+  SIZES=()
+  TIMES=()
+  SUM=0
+  for i in $(eval echo {1..$1});
+  do
+    echo "*** Starting run $i" >> $3
+    sync
+    echo 3 > /proc/sys/vm/drop_caches
+    rm -rf $TMP_BASE/cvmfs
+    START=$(date +%s.%N)
+    eval $2
+    sync
+    END=$(date +%s.%N)
+    DIFF=$(echo "$END - $START" | bc)
+    echo "Time of current run: $DIFF"
+    SIZES[$i]=$(du -s $TMP_BASE/cvmfs/cvmfs)
+    TIMES[$i]=$DIFF
+    SUM=$(echo "$SUM + $DIFF" | bc)
+    echo "*** Cleaning up run $i" >> $3
+    rm -rf $TMP_BASE/cvmfs
+  done
+  echo "Sizes: ${SIZES[@]}"
+  echo "Times: ${TIMES[@]}"
+  echo "Average: $(echo "$SUM / $1" | bc -l)"
+}
+
+main() {
+  # main [run log] > bench log
+  echo "****** Starting Benchmark ******"
+  echo "*** Cleaning up if necessary..." > $1
+  
+  
+  rm -rf $TMP_BASE/cvmfs
+  #service autofs restart
+ 
+  #echo "*** Changing to parallel version of shrinkwrap"
+  #cd $CVMFS_BASE
+  #git checkout feature-fs-traversal-par
+  #cd $CVMFS_BASE"/build"
+  #make 
+  #git status
+  #git rev-parse HEAD
+  #cd $CUR_BASE
+  #echo "*** Preloading cvmfs cache" >> $1
+  #time run_shrinkwrap 32 $1 2>&1
+  #rm -rf $TMP_BASE/cvmfs
+
+  #run_test 16 "run_shrinkwrap 32 $1" $1
+  #run_test 16 "run_shrinkwrap 16 $1" $1
+  #run_test 16 "run_shrinkwrap 8 $1" $1
+  #run_test 16 "run_shrinkwrap 4 $1" $1
+  #run_test 16 "run_shrinkwrap 1 $1" $1
+  #run_test 16 "run_shrinkwrap 128 $1" $1
+  #run_test 16 "run_shrinkwrap 64 $1" $1 
+
+  echo "*** Changing to non parallel version of shrinkwrap"
+  cd $CVMFS_BASE
+  git checkout feature-fs-traversal-interface >> $1
+  cd $CVMFS_BASE"/build"
+  make
+  git status
+  git rev-parse HEAD
+  cd $CUR_BASE
+  
+  #echo "*** Preloading cvmfs cache" >> $1
+  #time run_shrinkwrap 32 $1 2>&1 >> $1
+  #rm -rf $TMP_BASE/cvmfs
+
+
+  #run_test 16 "run_shrinkwrap 32 $1" $1
+  #run_test 16 "run_shrinkwrap 16 $1" $1
+  #run_test 16 "run_shrinkwrap 8 $1" $1
+  #run_test 16 "run_shrinkwrap 4 $1" $1
+  #run_test 16 "run_shrinkwrap 1 $1" $1
+  #run_test 16 "run_shrinkwrap 128 $1" $1
+  #run_test 16 "run_shrinkwrap 64 $1" $1
+  
+  #rm -rf $TMP_BASE/cvmfs
+  echo "*** Running 4 times with rsync"
+  service autofs restart
+  #time run_rsync $1 2>&1 > $1
+  echo "*** Cache is already preloaded:"
+  du -s /var/lib/cvmfs/shared
+  run_test 16 "run_rsync $1" $1
+
+  rm -rf $TMP_BASE/cvmfs
+ 
+  echo "****** Benchmark ended successfully ******"
+}
+
+main $@
+
+Spec File contents:
+^/*
+^/cvm4/*'
+/cvm4/usr/*
+
+Config file contents (shrinkwrap):
+CVMFS_CACHE_BASE=/var/lib/cvmfs/shrinkwrap
+CVMFS_CLAIM_OWNERSHIP=yes
+CVMFS_CONFIG_REPOSITORY=cvmfs-config.cern.ch
+CVMFS_SERVER_URL="http://cvmfs-stratum-zero-hpc.cern.ch/cvmfs/@fqrn@;http://cvmfs-stratum-one.cern.ch/cvmfs/@fqrn@;http://cvmfs-s1bnl.opensciencegrid.org:8000/cvmfs/@fqrn@"
+CVMFS_KEYS_DIR=/etc/cvmfs/keys/cern.ch
+CVMFS_HTTP_PROXY=DIRECT
+
+Config for repository: 
+CVMFS_REPOSITORY_NAME=cernvm-prod.cern.ch
+CERNVM_GRID_UI_VERSION=
+CVMFS_ALIEN_CACHE=
+CVMFS_ALT_ROOT_PATH=
+CVMFS_AUTHZ_HELPER=
+CVMFS_AUTHZ_SEARCH_PATH=
+CVMFS_AUTO_UPDATE=
+CVMFS_BACKOFF_INIT=2    # from /etc/cvmfs/default.conf
+CVMFS_BACKOFF_MAX=10    # from /etc/cvmfs/default.conf
+CVMFS_BASE_ENV=1    # from /etc/cvmfs/default.conf
+CVMFS_CACHE_BASE=/var/lib/cvmfs    # from /etc/cvmfs/default.conf
+CVMFS_CACHE_DIR=/var/lib/cvmfs/shared
+CVMFS_CACHE_PRIMARY=
+CVMFS_CHECK_PERMISSIONS=yes    # from /etc/cvmfs/default.conf
+CVMFS_CLAIM_OWNERSHIP=yes    # from /etc/cvmfs/default.conf
+CVMFS_CONFIG_REPO_REQUIRED=
+CVMFS_CONFIG_REPOSITORY=cvmfs-config.cern.ch    # from /etc/cvmfs/default.d/50-cern.conf
+CVMFS_DEBUGLOG=
+CVMFS_DEFAULT_DOMAIN=cern.ch    # from /etc/cvmfs/default.d/50-cern.conf
+CVMFS_DNS_RETRIES=
+CVMFS_DNS_TIMEOUT=
+CVMFS_EXTERNAL_FALLBACK_PROXY=
+CVMFS_EXTERNAL_HTTP_PROXY=
+CVMFS_EXTERNAL_SERVER_URL=
+CVMFS_EXTERNAL_TIMEOUT=
+CVMFS_EXTERNAL_TIMEOUT_DIRECT=
+CVMFS_FALLBACK_PROXY=
+CVMFS_FOLLOW_REDIRECTS=
+CVMFS_HIDE_MAGIC_XATTRS=
+CVMFS_HOST_RESET_AFTER=1800    # from /etc/cvmfs/default.conf
+CVMFS_HTTP_PROXY=DIRECT    # from /etc/cvmfs/default.local
+CVMFS_IGNORE_SIGNATURE=no    # from /etc/cvmfs/default.conf
+CVMFS_INITIAL_GENERATION=
+CVMFS_IPFAMILY_PREFER=
+CVMFS_KCACHE_TIMEOUT=
+CVMFS_KEYS_DIR=/etc/cvmfs/keys/cern.ch    # from /etc/cvmfs/domain.d/cern.ch.conf
+CVMFS_LOW_SPEED_LIMIT=1024    # from /etc/cvmfs/default.conf
+CVMFS_MAX_IPADDR_PER_PROXY=
+CVMFS_MAX_RETRIES=1    # from /etc/cvmfs/default.conf
+CVMFS_MAX_TTL=
+CVMFS_MEMCACHE_SIZE=
+CVMFS_MOUNT_DIR=/cvmfs    # from /etc/cvmfs/default.conf
+CVMFS_MOUNT_RW=no    # from /etc/cvmfs/default.conf
+CVMFS_NFILES=65536    # from /etc/cvmfs/default.conf
+CVMFS_NFS_SHARED=
+CVMFS_NFS_SOURCE=no    # from /etc/cvmfs/default.conf
+CVMFS_OOM_SCORE_ADJ=
+CVMFS_PAC_URLS=http://wpad/wpad.dat    # from /etc/cvmfs/default.conf
+CVMFS_PROXY_RESET_AFTER=300    # from /etc/cvmfs/default.conf
+CVMFS_PROXY_TEMPLATE=
+CVMFS_PUBLIC_KEY=
+CVMFS_QUOTA_LIMIT=16000    # from /etc/cvmfs/default.local
+CVMFS_RELOAD_SOCKETS=/var/run/cvmfs    # from /etc/cvmfs/default.conf
+CVMFS_REPOSITORIES=
+CVMFS_REPOSITORY_DATE=
+CVMFS_REPOSITORY_TAG=
+CVMFS_ROOT_HASH=
+CVMFS_SEND_INFO_HEADER=no    # from /etc/cvmfs/default.conf
+CVMFS_SERVER_CACHE_MODE=
+CVMFS_SERVER_URL='http://cvmfs-stratum-zero-hpc.cern.ch/cvmfs/cernvm-prod.cern.ch;http://cvmfs-stratum-one.cern.ch/cvmfs/cernvm-prod.cern.ch;http://cvmfs-s1bnl.opensciencegrid.org:8000/cvmfs/cernvm-prod.cern.ch'    # from /etc/cvmfs/domain.d/cern.ch.local
+CVMFS_SHARED_CACHE=yes    # from /etc/cvmfs/default.conf
+CVMFS_STRICT_MOUNT=no    # from /etc/cvmfs/default.conf
+CVMFS_SYSLOG_FACILITY=
+CVMFS_SYSLOG_LEVEL=
+CVMFS_SYSTEMD_NOKILL=
+CVMFS_TIMEOUT=5    # from /etc/cvmfs/default.conf
+CVMFS_TIMEOUT_DIRECT=10    # from /etc/cvmfs/default.conf
+CVMFS_TRACEFILE=
+CVMFS_TRUSTED_CERTS=
+CVMFS_USE_GEOAPI=yes    # from /etc/cvmfs/domain.d/cern.ch.conf
+CVMFS_USER=cvmfs    # from /etc/cvmfs/default.conf
+CVMFS_WORKSPACE=
+
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/home/samuel/benchmark/../cvmfs/build/cvmfs/
+****** Starting Benchmark ******
+*** Changing to non parallel version of shrinkwrap
+[  2%] Built target cvmfs2
+[  3%] Built target cvmfs_allow_helper
+[  3%] Built target cache.pb.generated
+[  6%] Built target cvmfs_cache_only
+[  6%] Built target libcvmfs_cache
+[  6%] Built target cvmfs_cache_null
+[  7%] Built target cvmfs_cache_ram
+[  8%] Built target cvmfs_deny_helper
+[ 10%] Built target cvmfs_fsck
+[ 24%] Built target cvmfs_fuse
+[ 39%] Built target cvmfs_fuse_debug
+[ 52%] Built target cvmfs_only
+[ 68%] Built target cvmfs_receiver
+[ 68%] Generating the cvmfs_server script
+[ 68%] Built target cvmfs_server
+[ 68%] Built target libcvmfs
+[ 71%] Built target cvmfs_shrinkwrap
+[ 76%] Built target cvmfs_stratum_agent
+[ 76%] Built target cvmfs_suid_helper
+[ 98%] Built target cvmfs_swissknife
+[ 99%] Built target test_libcvmfs
+[ 99%] Built target auto.cvmfs
+[100%] Built target mount.cvmfs
+# On branch feature-fs-traversal-interface
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	../run-10G-rsync-final.log
+#	../run-10G-rsync-new.log
+#	../run-10G-rsync.log
+#	../run-10G.log
+#	../run.log
+nothing added to commit but untracked files present (use "git add" to track)
+6e925f19d1267066950414939b54121dcd5c8665
+*** Running 4 times with rsync
+*** Cache is already preloaded:
+12620096	/var/lib/cvmfs/shared
+*** Testing command 'run_rsync run-10G-rsync-final.log' with 16 runs...
+Time of current run: 302.390322595
+Time of current run: 369.801180392
+Time of current run: 367.584381373
+Time of current run: 410.255144159
+Time of current run: 424.936556483
+Time of current run: 421.943913569
+Time of current run: 411.835932252
+Time of current run: 431.273495177
+Time of current run: 420.727859125
+Time of current run: 423.392829447
+Time of current run: 415.208892687
+Time of current run: 418.311487078
+Time of current run: 421.355738790
+Time of current run: 416.065894694
+Time of current run: 427.753860679
+Time of current run: 418.719455301
+Sizes: 13388676	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388660	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388640	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388652	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388660	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388676	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388648	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388676	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388636	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388668	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388644	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388644	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388660	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388692	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388636	/home/samuel/benchmark/tmp/cvmfs/cvmfs 13388652	/home/samuel/benchmark/tmp/cvmfs/cvmfs
+Times: 302.390322595 369.801180392 367.584381373 410.255144159 424.936556483 421.943913569 411.835932252 431.273495177 420.727859125 423.392829447 415.208892687 418.311487078 421.355738790 416.065894694 427.753860679 418.719455301
+Average: 406.34730898756250000000
+****** Benchmark ended successfully ******

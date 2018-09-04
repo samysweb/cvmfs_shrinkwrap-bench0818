@@ -1,0 +1,215 @@
+*** Cleaning up if necessary...
+*** Preloading cvmfs cache (rsync)
+*** Testing command 'run_rsync run.log' with 16 runs...
+*** Starting run 1
+*** Cleaning up run 1
+*** Starting run 2
+*** Cleaning up run 2
+*** Starting run 3
+*** Cleaning up run 3
+*** Starting run 4
+*** Cleaning up run 4
+*** Starting run 5
+*** Cleaning up run 5
+*** Starting run 6
+*** Cleaning up run 6
+*** Starting run 7
+*** Cleaning up run 7
+*** Starting run 8
+*** Cleaning up run 8
+*** Starting run 9
+*** Cleaning up run 9
+*** Starting run 10
+*** Cleaning up run 10
+*** Starting run 11
+*** Cleaning up run 11
+*** Starting run 12
+*** Cleaning up run 12
+*** Starting run 13
+*** Cleaning up run 13
+*** Starting run 14
+*** Cleaning up run 14
+*** Starting run 15
+*** Cleaning up run 15
+*** Starting run 16
+*** Cleaning up run 16
+*** Preloading cvmfs shrinkwrap cache
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|663232381|The number of bytes transfered from the source to the destination
+dedupedBytes|42824924|The number of bytes not copied thanks to deduplication
+dedupedFiles|2290|The number of files not copied thanks to deduplication
+destEntries|47980|The number of file system entries processed in the destination
+fileCnt|37660|The number of files transfered from the source to the destination
+srcEntries|47981|The number of file system entries processed in the source
+
+byteCnt|1128873801|The number of bytes transfered from the source to the destination
+dedupedBytes|51956419|The number of bytes not copied thanks to deduplication
+dedupedFiles|4502|The number of files not copied thanks to deduplication
+destEntries|85960|The number of file system entries processed in the destination
+fileCnt|70835|The number of files transfered from the source to the destination
+srcEntries|85961|The number of file system entries processed in the source
+
+byteCnt|1175192519|The number of bytes transfered from the source to the destination
+dedupedBytes|145089185|The number of bytes not copied thanks to deduplication
+dedupedFiles|4521|The number of files not copied thanks to deduplication
+destEntries|91315|The number of file system entries processed in the destination
+fileCnt|75163|The number of files transfered from the source to the destination
+srcEntries|91316|The number of file system entries processed in the source
+
+byteCnt|1203688112|The number of bytes transfered from the source to the destination
+dedupedBytes|145125176|The number of bytes not copied thanks to deduplication
+dedupedFiles|4634|The number of files not copied thanks to deduplication
+destEntries|98150|The number of file system entries processed in the destination
+fileCnt|80983|The number of files transfered from the source to the destination
+srcEntries|98151|The number of file system entries processed in the source
+
+byteCnt|1207501972|The number of bytes transfered from the source to the destination
+dedupedBytes|145528305|The number of bytes not copied thanks to deduplication
+dedupedFiles|4849|The number of files not copied thanks to deduplication
+destEntries|106185|The number of file system entries processed in the destination
+fileCnt|88069|The number of files transfered from the source to the destination
+srcEntries|106186|The number of file system entries processed in the source
+
+byteCnt|1265294540|The number of bytes transfered from the source to the destination
+dedupedBytes|145653722|The number of bytes not copied thanks to deduplication
+dedupedFiles|4872|The number of files not copied thanks to deduplication
+destEntries|113406|The number of file system entries processed in the destination
+fileCnt|94783|The number of files transfered from the source to the destination
+srcEntries|113407|The number of file system entries processed in the source
+
+byteCnt|1330871408|The number of bytes transfered from the source to the destination
+dedupedBytes|145957920|The number of bytes not copied thanks to deduplication
+dedupedFiles|5662|The number of files not copied thanks to deduplication
+destEntries|123241|The number of file system entries processed in the destination
+fileCnt|102804|The number of files transfered from the source to the destination
+srcEntries|123242|The number of file system entries processed in the source
+
+byteCnt|1345479396|The number of bytes transfered from the source to the destination
+dedupedBytes|150938574|The number of bytes not copied thanks to deduplication
+dedupedFiles|8381|The number of files not copied thanks to deduplication
+destEntries|134390|The number of file system entries processed in the destination
+fileCnt|110219|The number of files transfered from the source to the destination
+srcEntries|134391|The number of file system entries processed in the source
+
+byteCnt|1357237252|The number of bytes transfered from the source to the destination
+dedupedBytes|151894549|The number of bytes not copied thanks to deduplication
+dedupedFiles|9969|The number of files not copied thanks to deduplication
+destEntries|143874|The number of file system entries processed in the destination
+fileCnt|117563|The number of files transfered from the source to the destination
+srcEntries|143875|The number of file system entries processed in the source
+
+byteCnt|1445195539|The number of bytes transfered from the source to the destination
+dedupedBytes|169454372|The number of bytes not copied thanks to deduplication
+dedupedFiles|10302|The number of files not copied thanks to deduplication
+destEntries|152503|The number of file system entries processed in the destination
+fileCnt|124733|The number of files transfered from the source to the destination
+srcEntries|152504|The number of file system entries processed in the source
+
+byteCnt|1666366442|The number of bytes transfered from the source to the destination
+dedupedBytes|182060351|The number of bytes not copied thanks to deduplication
+dedupedFiles|10603|The number of files not copied thanks to deduplication
+destEntries|159640|The number of file system entries processed in the destination
+fileCnt|130961|The number of files transfered from the source to the destination
+srcEntries|159641|The number of file system entries processed in the source
+
+byteCnt|1823410340|The number of bytes transfered from the source to the destination
+dedupedBytes|182060351|The number of bytes not copied thanks to deduplication
+dedupedFiles|10603|The number of files not copied thanks to deduplication
+destEntries|168452|The number of file system entries processed in the destination
+fileCnt|139364|The number of files transfered from the source to the destination
+srcEntries|168453|The number of file system entries processed in the source
+
+byteCnt|2048118295|The number of bytes transfered from the source to the destination
+dedupedBytes|187969689|The number of bytes not copied thanks to deduplication
+dedupedFiles|10726|The number of files not copied thanks to deduplication
+destEntries|178624|The number of file system entries processed in the destination
+fileCnt|148780|The number of files transfered from the source to the destination
+srcEntries|178625|The number of file system entries processed in the source
+
+byteCnt|2256790534|The number of bytes transfered from the source to the destination
+dedupedBytes|194229320|The number of bytes not copied thanks to deduplication
+dedupedFiles|11090|The number of files not copied thanks to deduplication
+destEntries|188760|The number of file system entries processed in the destination
+fileCnt|156349|The number of files transfered from the source to the destination
+srcEntries|188761|The number of file system entries processed in the source
+
+byteCnt|2296924091|The number of bytes transfered from the source to the destination
+dedupedBytes|201886509|The number of bytes not copied thanks to deduplication
+dedupedFiles|13389|The number of files not copied thanks to deduplication
+destEntries|202515|The number of file system entries processed in the destination
+fileCnt|165261|The number of files transfered from the source to the destination
+srcEntries|202516|The number of file system entries processed in the source
+
+byteCnt|2338468402|The number of bytes transfered from the source to the destination
+dedupedBytes|201925567|The number of bytes not copied thanks to deduplication
+dedupedFiles|13419|The number of files not copied thanks to deduplication
+destEntries|214077|The number of file system entries processed in the destination
+fileCnt|174109|The number of files transfered from the source to the destination
+srcEntries|214078|The number of file system entries processed in the source
+
+byteCnt|2434618732|The number of bytes transfered from the source to the destination
+dedupedBytes|235073937|The number of bytes not copied thanks to deduplication
+dedupedFiles|14223|The number of files not copied thanks to deduplication
+destEntries|225274|The number of file system entries processed in the destination
+fileCnt|183514|The number of files transfered from the source to the destination
+srcEntries|225275|The number of file system entries processed in the source
+
+byteCnt|2603508726|The number of bytes transfered from the source to the destination
+dedupedBytes|252164900|The number of bytes not copied thanks to deduplication
+dedupedFiles|15309|The number of files not copied thanks to deduplication
+destEntries|236346|The number of file system entries processed in the destination
+fileCnt|191035|The number of files transfered from the source to the destination
+srcEntries|236347|The number of file system entries processed in the source
+
+byteCnt|2726831041|The number of bytes transfered from the source to the destination
+dedupedBytes|313490652|The number of bytes not copied thanks to deduplication
+dedupedFiles|15874|The number of files not copied thanks to deduplication
+destEntries|245264|The number of file system entries processed in the destination
+fileCnt|198863|The number of files transfered from the source to the destination
+srcEntries|245265|The number of file system entries processed in the source
+
+byteCnt|2910639299|The number of bytes transfered from the source to the destination
+dedupedBytes|361327345|The number of bytes not copied thanks to deduplication
+dedupedFiles|17651|The number of files not copied thanks to deduplication
+destEntries|255015|The number of file system entries processed in the destination
+fileCnt|206334|The number of files transfered from the source to the destination
+srcEntries|255016|The number of file system entries processed in the source
+
+byteCnt|2988195645|The number of bytes transfered from the source to the destination
+dedupedBytes|376907471|The number of bytes not copied thanks to deduplication
+dedupedFiles|18476|The number of files not copied thanks to deduplication
+destEntries|262912|The number of file system entries processed in the destination
+fileCnt|213442|The number of files transfered from the source to the destination
+srcEntries|262913|The number of file system entries processed in the source
+
+byteCnt|3165560700|The number of bytes transfered from the source to the destination
+dedupedBytes|386534591|The number of bytes not copied thanks to deduplication
+dedupedFiles|18966|The number of files not copied thanks to deduplication
+destEntries|271297|The number of file system entries processed in the destination
+fileCnt|220938|The number of files transfered from the source to the destination
+srcEntries|271298|The number of file system entries processed in the source
+
+byteCnt|3481725851|The number of bytes transfered from the source to the destination
+dedupedBytes|399572582|The number of bytes not copied thanks to deduplication
+dedupedFiles|20284|The number of files not copied thanks to deduplication
+destEntries|280272|The number of file system entries processed in the destination
+fileCnt|228355|The number of files transfered from the source to the destination
+srcEntries|280273|The number of file system entries processed in the source
+
+byteCnt|3642730558|The number of bytes transfered from the source to the destination
+dedupedBytes|423154740|The number of bytes not copied thanks to deduplication
+dedupedFiles|20765|The number of files not copied thanks to deduplication
+destEntries|289154|The number of file system entries processed in the destination
+fileCnt|236332|The number of files transfered from the source to the destination
+srcEntries|289155|The number of file system entries processed in the source
+
+byteCnt|3958047763|The number of bytes transfered from the source to the destination
+dedupedBytes|1345637692|The number of bytes not copied thanks to deduplication
+dedupedFiles|21521|The number of files not copied thanks to deduplication
+destEntries|298080|The number of file system entries processed in the destination
+fileCnt|241849|The number of files transfered from the source to the destination
+srcEntries|298081|The number of file system entries processed in the source
+

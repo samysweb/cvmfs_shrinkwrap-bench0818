@@ -1,0 +1,106 @@
+Opening spec file took: 31389us
+HiTotal time: 26076us
+Steps: 10000
+Average time: 2.6076us
+Total time: 53028us
+Steps: 20000
+Average time: 2.6514us
+Total time: 81783us
+Steps: 30000
+Average time: 2.7261us
+Total time: 100832us
+Steps: 40000
+Average time: 2.5208us
+Total time: 131945us
+Steps: 50000
+Average time: 2.6389us
+Total time: 160963us
+Steps: 60000
+Average time: 2.68272us
+Total time: 191237us
+Steps: 70000
+Average time: 2.73196us
+Total time: 219712us
+Steps: 80000
+Average time: 2.7464us
+Total time: 248668us
+Steps: 90000
+Average time: 2.76298us
+Total time: 278595us
+Steps: 100000
+Average time: 2.78595us
+Total time: 307128us
+Steps: 110000
+Average time: 2.79207us
+Total time: 334685us
+Steps: 120000
+Average time: 2.78904us
+Total time: 362500us
+Steps: 130000
+Average time: 2.78846us
+Total time: 388475us
+Steps: 140000
+Average time: 2.77482us
+Total time: 409497us
+Steps: 150000
+Average time: 2.72998us
+Total time: 427560us
+Steps: 160000
+Average time: 2.67225us
+Total time: 445699us
+Steps: 170000
+Average time: 2.62176us
+Total time: 464349us
+Steps: 180000
+Average time: 2.57972us
+Total time: 488067us
+Steps: 190000
+Average time: 2.56877us
+Total time: 518339us
+Steps: 200000
+Average time: 2.5917us
+Total time: 549547us
+Steps: 210000
+Average time: 2.61689us
+Total time: 577033us
+Steps: 220000
+Average time: 2.62288us
+Total time: 604415us
+Steps: 230000
+Average time: 2.62789us
+Total time: 633787us
+Steps: 240000
+Average time: 2.64078us
+Total time: 662248us
+Steps: 250000
+Average time: 2.64899us
+Total time: 691114us
+Steps: 260000
+Average time: 2.65813us
+Total time: 720010us
+Steps: 270000
+Average time: 2.6667us
+Total time: 751581us
+Steps: 280000
+Average time: 2.68422us
+Total time: 781620us
+Steps: 290000
+Average time: 2.69524us
+Total time: 810901us
+Steps: 300000
+Average time: 2.703us
+Total time: 838614us
+Steps: 310000
+Average time: 2.70521us
+Total time: 867623us
+Steps: 320000
+Average time: 2.71132us
+Total time: 896567us
+Steps: 330000
+Average time: 2.71687us
+Total time: 924204us
+Steps: 340000
+Average time: 2.71825us
+Total time: 931179us
+Steps: 343604
+Average time: 2.71004us

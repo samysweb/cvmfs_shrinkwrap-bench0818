@@ -1,0 +1,2217 @@
+*** Cleaning up if necessary...
+*** Preloading cvmfs shrinkwrap cache
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|864483624|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21387|The number of file system entries processed in the destination
+fileCnt|11413|The number of files transfered from the source to the destination
+srcEntries|21388|The number of file system entries processed in the source
+
+byteCnt|1188701268|The number of bytes transfered from the source to the destination
+dedupedBytes|1571818620|The number of bytes not copied thanks to deduplication
+dedupedFiles|2590|The number of files not copied thanks to deduplication
+destEntries|29477|The number of file system entries processed in the destination
+fileCnt|18517|The number of files transfered from the source to the destination
+srcEntries|29478|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Testing command 'run_shrinkwrap 1 run.log' with 16 runs...
+*** Starting run 1
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|1182363122|The number of bytes transfered from the source to the destination
+dedupedBytes|1571799652|The number of bytes not copied thanks to deduplication
+dedupedFiles|2567|The number of files not copied thanks to deduplication
+destEntries|28803|The number of file system entries processed in the destination
+fileCnt|17962|The number of files transfered from the source to the destination
+srcEntries|28804|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 1
+*** Starting run 2
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|1061289887|The number of bytes transfered from the source to the destination
+dedupedBytes|1431230758|The number of bytes not copied thanks to deduplication
+dedupedFiles|2466|The number of files not copied thanks to deduplication
+destEntries|25067|The number of file system entries processed in the destination
+fileCnt|14717|The number of files transfered from the source to the destination
+srcEntries|25067|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 2
+*** Starting run 3
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|1152883933|The number of bytes transfered from the source to the destination
+dedupedBytes|1571769616|The number of bytes not copied thanks to deduplication
+dedupedFiles|2531|The number of files not copied thanks to deduplication
+destEntries|27064|The number of file system entries processed in the destination
+fileCnt|16407|The number of files transfered from the source to the destination
+srcEntries|27065|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 3
+*** Starting run 4
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|1174290266|The number of bytes transfered from the source to the destination
+dedupedBytes|1571788305|The number of bytes not copied thanks to deduplication
+dedupedFiles|2554|The number of files not copied thanks to deduplication
+destEntries|28161|The number of file system entries processed in the destination
+fileCnt|17307|The number of files transfered from the source to the destination
+srcEntries|28162|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 4
+*** Starting run 5
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|1153945471|The number of bytes transfered from the source to the destination
+dedupedBytes|1571769616|The number of bytes not copied thanks to deduplication
+dedupedFiles|2531|The number of files not copied thanks to deduplication
+destEntries|27265|The number of file system entries processed in the destination
+fileCnt|16501|The number of files transfered from the source to the destination
+srcEntries|27266|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 5
+*** Starting run 6
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|872527822|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21254|The number of file system entries processed in the destination
+fileCnt|11422|The number of files transfered from the source to the destination
+srcEntries|21255|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 6
+*** Starting run 7
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|616193604|The number of bytes transfered from the source to the destination
+dedupedBytes|564823964|The number of bytes not copied thanks to deduplication
+dedupedFiles|2271|The number of files not copied thanks to deduplication
+destEntries|15202|The number of file system entries processed in the destination
+fileCnt|5956|The number of files transfered from the source to the destination
+srcEntries|15203|The number of file system entries processed in the source
+
+byteCnt|1176632438|The number of bytes transfered from the source to the destination
+dedupedBytes|1571794646|The number of bytes not copied thanks to deduplication
+dedupedFiles|2561|The number of files not copied thanks to deduplication
+destEntries|28448|The number of file system entries processed in the destination
+fileCnt|17605|The number of files transfered from the source to the destination
+srcEntries|28449|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 7
+*** Starting run 8
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|599490356|The number of bytes transfered from the source to the destination
+dedupedBytes|564823964|The number of bytes not copied thanks to deduplication
+dedupedFiles|2271|The number of files not copied thanks to deduplication
+destEntries|14694|The number of file system entries processed in the destination
+fileCnt|5453|The number of files transfered from the source to the destination
+srcEntries|14695|The number of file system entries processed in the source
+
+byteCnt|1064520734|The number of bytes transfered from the source to the destination
+dedupedBytes|1431230758|The number of bytes not copied thanks to deduplication
+dedupedFiles|2466|The number of files not copied thanks to deduplication
+destEntries|25073|The number of file system entries processed in the destination
+fileCnt|14831|The number of files transfered from the source to the destination
+srcEntries|25074|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 8
+*** Starting run 9
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|618636328|The number of bytes transfered from the source to the destination
+dedupedBytes|564823964|The number of bytes not copied thanks to deduplication
+dedupedFiles|2271|The number of files not copied thanks to deduplication
+destEntries|15236|The number of file system entries processed in the destination
+fileCnt|6047|The number of files transfered from the source to the destination
+srcEntries|15237|The number of file system entries processed in the source
+
+byteCnt|1136204491|The number of bytes transfered from the source to the destination
+dedupedBytes|1571758269|The number of bytes not copied thanks to deduplication
+dedupedFiles|2518|The number of files not copied thanks to deduplication
+destEntries|26163|The number of file system entries processed in the destination
+fileCnt|15476|The number of files transfered from the source to the destination
+srcEntries|26164|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 9
+*** Starting run 10
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|601595292|The number of bytes transfered from the source to the destination
+dedupedBytes|564823964|The number of bytes not copied thanks to deduplication
+dedupedFiles|2271|The number of files not copied thanks to deduplication
+destEntries|14709|The number of file system entries processed in the destination
+fileCnt|5461|The number of files transfered from the source to the destination
+srcEntries|14710|The number of file system entries processed in the source
+
+byteCnt|1108966643|The number of bytes transfered from the source to the destination
+dedupedBytes|1431341257|The number of bytes not copied thanks to deduplication
+dedupedFiles|2477|The number of files not copied thanks to deduplication
+destEntries|25370|The number of file system entries processed in the destination
+fileCnt|14990|The number of files transfered from the source to the destination
+srcEntries|25371|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 10
+*** Starting run 11
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|586783586|The number of bytes transfered from the source to the destination
+dedupedBytes|559846028|The number of bytes not copied thanks to deduplication
+dedupedFiles|2260|The number of files not copied thanks to deduplication
+destEntries|13744|The number of file system entries processed in the destination
+fileCnt|4766|The number of files transfered from the source to the destination
+srcEntries|13745|The number of file system entries processed in the source
+
+byteCnt|1057858583|The number of bytes transfered from the source to the destination
+dedupedBytes|1431203549|The number of bytes not copied thanks to deduplication
+dedupedFiles|2417|The number of files not copied thanks to deduplication
+destEntries|24756|The number of file system entries processed in the destination
+fileCnt|14578|The number of files transfered from the source to the destination
+srcEntries|24757|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 11
+*** Starting run 12
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|619222597|The number of bytes transfered from the source to the destination
+dedupedBytes|564823964|The number of bytes not copied thanks to deduplication
+dedupedFiles|2271|The number of files not copied thanks to deduplication
+destEntries|15236|The number of file system entries processed in the destination
+fileCnt|6076|The number of files transfered from the source to the destination
+srcEntries|15237|The number of file system entries processed in the source
+
+byteCnt|1134532493|The number of bytes transfered from the source to the destination
+dedupedBytes|1550407225|The number of bytes not copied thanks to deduplication
+dedupedFiles|2506|The number of files not copied thanks to deduplication
+destEntries|25836|The number of file system entries processed in the destination
+fileCnt|15327|The number of files transfered from the source to the destination
+srcEntries|25837|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 12
+*** Starting run 13
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|615792857|The number of bytes transfered from the source to the destination
+dedupedBytes|564823964|The number of bytes not copied thanks to deduplication
+dedupedFiles|2271|The number of files not copied thanks to deduplication
+destEntries|15018|The number of file system entries processed in the destination
+fileCnt|5896|The number of files transfered from the source to the destination
+srcEntries|15019|The number of file system entries processed in the source
+
+byteCnt|1131327895|The number of bytes transfered from the source to the destination
+dedupedBytes|1543235507|The number of bytes not copied thanks to deduplication
+dedupedFiles|2493|The number of files not copied thanks to deduplication
+destEntries|25495|The number of file system entries processed in the destination
+fileCnt|15134|The number of files transfered from the source to the destination
+srcEntries|25496|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 13
+*** Starting run 14
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|597417935|The number of bytes transfered from the source to the destination
+dedupedBytes|564823964|The number of bytes not copied thanks to deduplication
+dedupedFiles|2271|The number of files not copied thanks to deduplication
+destEntries|14404|The number of file system entries processed in the destination
+fileCnt|5315|The number of files transfered from the source to the destination
+srcEntries|14405|The number of file system entries processed in the source
+
+byteCnt|1023665532|The number of bytes transfered from the source to the destination
+dedupedBytes|1431193268|The number of bytes not copied thanks to deduplication
+dedupedFiles|2398|The number of files not copied thanks to deduplication
+destEntries|24462|The number of file system entries processed in the destination
+fileCnt|14132|The number of files transfered from the source to the destination
+srcEntries|24463|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 14
+*** Starting run 15
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|599431975|The number of bytes transfered from the source to the destination
+dedupedBytes|564823964|The number of bytes not copied thanks to deduplication
+dedupedFiles|2271|The number of files not copied thanks to deduplication
+destEntries|14706|The number of file system entries processed in the destination
+fileCnt|5447|The number of files transfered from the source to the destination
+srcEntries|14707|The number of file system entries processed in the source
+
+byteCnt|1056593908|The number of bytes transfered from the source to the destination
+dedupedBytes|1431203549|The number of bytes not copied thanks to deduplication
+dedupedFiles|2417|The number of files not copied thanks to deduplication
+destEntries|24756|The number of file system entries processed in the destination
+fileCnt|14506|The number of files transfered from the source to the destination
+srcEntries|24757|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 15
+*** Starting run 16
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 1 workers
+byteCnt|592603735|The number of bytes transfered from the source to the destination
+dedupedBytes|559850100|The number of bytes not copied thanks to deduplication
+dedupedFiles|2269|The number of files not copied thanks to deduplication
+destEntries|14012|The number of file system entries processed in the destination
+fileCnt|5066|The number of files transfered from the source to the destination
+srcEntries|14013|The number of file system entries processed in the source
+
+byteCnt|1055003280|The number of bytes transfered from the source to the destination
+dedupedBytes|1431203549|The number of bytes not copied thanks to deduplication
+dedupedFiles|2417|The number of files not copied thanks to deduplication
+destEntries|24756|The number of file system entries processed in the destination
+fileCnt|14422|The number of files transfered from the source to the destination
+srcEntries|24757|The number of file system entries processed in the source
+
+Stopping 1 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 16
+*** Testing command 'run_shrinkwrap 4 run.log' with 16 runs...
+*** Starting run 1
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|916851871|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21523|The number of file system entries processed in the destination
+fileCnt|11767|The number of files transfered from the source to the destination
+srcEntries|21524|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 1
+*** Starting run 2
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|949409281|The number of bytes transfered from the source to the destination
+dedupedBytes|1430137177|The number of bytes not copied thanks to deduplication
+dedupedFiles|2365|The number of files not copied thanks to deduplication
+destEntries|22406|The number of file system entries processed in the destination
+fileCnt|12524|The number of files transfered from the source to the destination
+srcEntries|22407|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 2
+*** Starting run 3
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|852268576|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21001|The number of file system entries processed in the destination
+fileCnt|11249|The number of files transfered from the source to the destination
+srcEntries|21002|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 3
+*** Starting run 4
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|927100807|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21854|The number of file system entries processed in the destination
+fileCnt|11901|The number of files transfered from the source to the destination
+srcEntries|21855|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 4
+*** Starting run 5
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|821601420|The number of bytes transfered from the source to the destination
+dedupedBytes|1277114778|The number of bytes not copied thanks to deduplication
+dedupedFiles|2331|The number of files not copied thanks to deduplication
+destEntries|20472|The number of file system entries processed in the destination
+fileCnt|10779|The number of files transfered from the source to the destination
+srcEntries|20473|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 5
+*** Starting run 6
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|878864107|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21264|The number of file system entries processed in the destination
+fileCnt|11469|The number of files transfered from the source to the destination
+srcEntries|21265|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 6
+*** Starting run 7
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|806680489|The number of bytes transfered from the source to the destination
+dedupedBytes|1277114778|The number of bytes not copied thanks to deduplication
+dedupedFiles|2331|The number of files not copied thanks to deduplication
+destEntries|20406|The number of file system entries processed in the destination
+fileCnt|10649|The number of files transfered from the source to the destination
+srcEntries|20407|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 7
+*** Starting run 8
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|779760071|The number of bytes transfered from the source to the destination
+dedupedBytes|1277114778|The number of bytes not copied thanks to deduplication
+dedupedFiles|2331|The number of files not copied thanks to deduplication
+destEntries|20414|The number of file system entries processed in the destination
+fileCnt|10605|The number of files transfered from the source to the destination
+srcEntries|20415|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 8
+*** Starting run 9
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|856893847|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21266|The number of file system entries processed in the destination
+fileCnt|11383|The number of files transfered from the source to the destination
+srcEntries|21267|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 9
+*** Starting run 10
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|846661828|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21011|The number of file system entries processed in the destination
+fileCnt|11111|The number of files transfered from the source to the destination
+srcEntries|21012|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 10
+*** Starting run 11
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|848592768|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21010|The number of file system entries processed in the destination
+fileCnt|11138|The number of files transfered from the source to the destination
+srcEntries|21011|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 11
+*** Starting run 12
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|795777033|The number of bytes transfered from the source to the destination
+dedupedBytes|1277114778|The number of bytes not copied thanks to deduplication
+dedupedFiles|2331|The number of files not copied thanks to deduplication
+destEntries|20416|The number of file system entries processed in the destination
+fileCnt|10618|The number of files transfered from the source to the destination
+srcEntries|20417|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 12
+*** Starting run 13
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|855424769|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21172|The number of file system entries processed in the destination
+fileCnt|11324|The number of files transfered from the source to the destination
+srcEntries|21173|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 13
+*** Starting run 14
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|837577036|The number of bytes transfered from the source to the destination
+dedupedBytes|1277206775|The number of bytes not copied thanks to deduplication
+dedupedFiles|2343|The number of files not copied thanks to deduplication
+destEntries|20686|The number of file system entries processed in the destination
+fileCnt|10986|The number of files transfered from the source to the destination
+srcEntries|20687|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 14
+*** Starting run 15
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|871652702|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21267|The number of file system entries processed in the destination
+fileCnt|11420|The number of files transfered from the source to the destination
+srcEntries|21268|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 15
+*** Starting run 16
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 4 workers
+byteCnt|824289791|The number of bytes transfered from the source to the destination
+dedupedBytes|1277241552|The number of bytes not copied thanks to deduplication
+dedupedFiles|2347|The number of files not copied thanks to deduplication
+destEntries|20699|The number of file system entries processed in the destination
+fileCnt|10854|The number of files transfered from the source to the destination
+srcEntries|20700|The number of file system entries processed in the source
+
+Stopping 4 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 16
+*** Testing command 'run_shrinkwrap 8 run.log' with 16 runs...
+*** Starting run 1
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|1003030961|The number of bytes transfered from the source to the destination
+dedupedBytes|1430162282|The number of bytes not copied thanks to deduplication
+dedupedFiles|2368|The number of files not copied thanks to deduplication
+destEntries|23596|The number of file system entries processed in the destination
+fileCnt|13571|The number of files transfered from the source to the destination
+srcEntries|23597|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 1
+*** Starting run 2
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|859369538|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21281|The number of file system entries processed in the destination
+fileCnt|11404|The number of files transfered from the source to the destination
+srcEntries|21282|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 2
+*** Starting run 3
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|936378421|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|22135|The number of file system entries processed in the destination
+fileCnt|12144|The number of files transfered from the source to the destination
+srcEntries|22136|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 3
+*** Starting run 4
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|851194139|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21026|The number of file system entries processed in the destination
+fileCnt|11206|The number of files transfered from the source to the destination
+srcEntries|21027|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 4
+*** Starting run 5
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|875774801|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21272|The number of file system entries processed in the destination
+fileCnt|11470|The number of files transfered from the source to the destination
+srcEntries|21273|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 5
+*** Starting run 6
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|978014993|The number of bytes transfered from the source to the destination
+dedupedBytes|1430162057|The number of bytes not copied thanks to deduplication
+dedupedFiles|2367|The number of files not copied thanks to deduplication
+destEntries|23409|The number of file system entries processed in the destination
+fileCnt|13385|The number of files transfered from the source to the destination
+srcEntries|23410|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 6
+*** Starting run 7
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|949620670|The number of bytes transfered from the source to the destination
+dedupedBytes|1430137177|The number of bytes not copied thanks to deduplication
+dedupedFiles|2365|The number of files not copied thanks to deduplication
+destEntries|22422|The number of file system entries processed in the destination
+fileCnt|12537|The number of files transfered from the source to the destination
+srcEntries|22423|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 7
+*** Starting run 8
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|984668025|The number of bytes transfered from the source to the destination
+dedupedBytes|1430162282|The number of bytes not copied thanks to deduplication
+dedupedFiles|2368|The number of files not copied thanks to deduplication
+destEntries|23597|The number of file system entries processed in the destination
+fileCnt|13448|The number of files transfered from the source to the destination
+srcEntries|23598|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 8
+*** Starting run 9
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|981525364|The number of bytes transfered from the source to the destination
+dedupedBytes|1430162282|The number of bytes not copied thanks to deduplication
+dedupedFiles|2368|The number of files not copied thanks to deduplication
+destEntries|23598|The number of file system entries processed in the destination
+fileCnt|13427|The number of files transfered from the source to the destination
+srcEntries|23599|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 9
+*** Starting run 10
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|1006267376|The number of bytes transfered from the source to the destination
+dedupedBytes|1430162282|The number of bytes not copied thanks to deduplication
+dedupedFiles|2368|The number of files not copied thanks to deduplication
+destEntries|23595|The number of file system entries processed in the destination
+fileCnt|13581|The number of files transfered from the source to the destination
+srcEntries|23596|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 10
+*** Starting run 11
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|916736642|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21537|The number of file system entries processed in the destination
+fileCnt|11758|The number of files transfered from the source to the destination
+srcEntries|21538|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 11
+*** Starting run 12
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|856827111|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21281|The number of file system entries processed in the destination
+fileCnt|11380|The number of files transfered from the source to the destination
+srcEntries|21282|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 12
+*** Starting run 13
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|921579170|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21869|The number of file system entries processed in the destination
+fileCnt|11861|The number of files transfered from the source to the destination
+srcEntries|21870|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 13
+*** Starting run 14
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|848063832|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21026|The number of file system entries processed in the destination
+fileCnt|11143|The number of files transfered from the source to the destination
+srcEntries|21027|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 14
+*** Starting run 15
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|958980772|The number of bytes transfered from the source to the destination
+dedupedBytes|1430137177|The number of bytes not copied thanks to deduplication
+dedupedFiles|2365|The number of files not copied thanks to deduplication
+destEntries|22710|The number of file system entries processed in the destination
+fileCnt|12678|The number of files transfered from the source to the destination
+srcEntries|22711|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 15
+*** Starting run 16
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 8 workers
+byteCnt|916812494|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21538|The number of file system entries processed in the destination
+fileCnt|11761|The number of files transfered from the source to the destination
+srcEntries|21539|The number of file system entries processed in the source
+
+Stopping 8 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 16
+*** Testing command 'run_shrinkwrap 16 run.log' with 16 runs...
+*** Starting run 1
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|938543936|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|22143|The number of file system entries processed in the destination
+fileCnt|12217|The number of files transfered from the source to the destination
+srcEntries|22144|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 1
+*** Starting run 2
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|914636950|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21544|The number of file system entries processed in the destination
+fileCnt|11721|The number of files transfered from the source to the destination
+srcEntries|21545|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 2
+*** Starting run 3
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|947375969|The number of bytes transfered from the source to the destination
+dedupedBytes|1430137177|The number of bytes not copied thanks to deduplication
+dedupedFiles|2365|The number of files not copied thanks to deduplication
+destEntries|22429|The number of file system entries processed in the destination
+fileCnt|12508|The number of files transfered from the source to the destination
+srcEntries|22430|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 3
+*** Starting run 4
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|912559793|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21543|The number of file system entries processed in the destination
+fileCnt|11758|The number of files transfered from the source to the destination
+srcEntries|21544|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 4
+*** Starting run 5
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|967570540|The number of bytes transfered from the source to the destination
+dedupedBytes|1430162057|The number of bytes not copied thanks to deduplication
+dedupedFiles|2367|The number of files not copied thanks to deduplication
+destEntries|23030|The number of file system entries processed in the destination
+fileCnt|12971|The number of files transfered from the source to the destination
+srcEntries|23031|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 5
+*** Starting run 6
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|1035895151|The number of bytes transfered from the source to the destination
+dedupedBytes|1431193268|The number of bytes not copied thanks to deduplication
+dedupedFiles|2398|The number of files not copied thanks to deduplication
+destEntries|24501|The number of file system entries processed in the destination
+fileCnt|14212|The number of files transfered from the source to the destination
+srcEntries|24502|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 6
+*** Starting run 7
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|1043076268|The number of bytes transfered from the source to the destination
+dedupedBytes|1431203549|The number of bytes not copied thanks to deduplication
+dedupedFiles|2417|The number of files not copied thanks to deduplication
+destEntries|24780|The number of file system entries processed in the destination
+fileCnt|14403|The number of files transfered from the source to the destination
+srcEntries|24781|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 7
+*** Starting run 8
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|1004587831|The number of bytes transfered from the source to the destination
+dedupedBytes|1430248797|The number of bytes not copied thanks to deduplication
+dedupedFiles|2379|The number of files not copied thanks to deduplication
+destEntries|23902|The number of file system entries processed in the destination
+fileCnt|13647|The number of files transfered from the source to the destination
+srcEntries|23903|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 8
+*** Starting run 9
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|1043560315|The number of bytes transfered from the source to the destination
+dedupedBytes|1431203549|The number of bytes not copied thanks to deduplication
+dedupedFiles|2417|The number of files not copied thanks to deduplication
+destEntries|24780|The number of file system entries processed in the destination
+fileCnt|14406|The number of files transfered from the source to the destination
+srcEntries|24781|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 9
+*** Starting run 10
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|1009668913|The number of bytes transfered from the source to the destination
+dedupedBytes|1430248797|The number of bytes not copied thanks to deduplication
+dedupedFiles|2379|The number of files not copied thanks to deduplication
+destEntries|23911|The number of file system entries processed in the destination
+fileCnt|13731|The number of files transfered from the source to the destination
+srcEntries|23912|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 10
+*** Starting run 11
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|1029111227|The number of bytes transfered from the source to the destination
+dedupedBytes|1431193268|The number of bytes not copied thanks to deduplication
+dedupedFiles|2398|The number of files not copied thanks to deduplication
+destEntries|24495|The number of file system entries processed in the destination
+fileCnt|14217|The number of files transfered from the source to the destination
+srcEntries|24496|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 11
+*** Starting run 12
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|1042482165|The number of bytes transfered from the source to the destination
+dedupedBytes|1431193268|The number of bytes not copied thanks to deduplication
+dedupedFiles|2398|The number of files not copied thanks to deduplication
+destEntries|24672|The number of file system entries processed in the destination
+fileCnt|14387|The number of files transfered from the source to the destination
+srcEntries|24673|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 12
+*** Starting run 13
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|916578580|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21545|The number of file system entries processed in the destination
+fileCnt|11733|The number of files transfered from the source to the destination
+srcEntries|21546|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 13
+*** Starting run 14
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|885606851|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21545|The number of file system entries processed in the destination
+fileCnt|11572|The number of files transfered from the source to the destination
+srcEntries|21546|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 14
+*** Starting run 15
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|895024079|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21546|The number of file system entries processed in the destination
+fileCnt|11664|The number of files transfered from the source to the destination
+srcEntries|21547|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 15
+*** Starting run 16
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 16 workers
+byteCnt|972214048|The number of bytes transfered from the source to the destination
+dedupedBytes|1430162057|The number of bytes not copied thanks to deduplication
+dedupedFiles|2367|The number of files not copied thanks to deduplication
+destEntries|23030|The number of file system entries processed in the destination
+fileCnt|13065|The number of files transfered from the source to the destination
+srcEntries|23031|The number of file system entries processed in the source
+
+Stopping 16 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 16
+*** Testing command 'run_shrinkwrap 32 run.log' with 16 runs...
+*** Starting run 1
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|917887694|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21568|The number of file system entries processed in the destination
+fileCnt|11804|The number of files transfered from the source to the destination
+srcEntries|21569|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 1
+*** Starting run 2
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|974738264|The number of bytes transfered from the source to the destination
+dedupedBytes|1430162057|The number of bytes not copied thanks to deduplication
+dedupedFiles|2367|The number of files not copied thanks to deduplication
+destEntries|23127|The number of file system entries processed in the destination
+fileCnt|13184|The number of files transfered from the source to the destination
+srcEntries|23128|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 2
+*** Starting run 3
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|961142996|The number of bytes transfered from the source to the destination
+dedupedBytes|1430137177|The number of bytes not copied thanks to deduplication
+dedupedFiles|2365|The number of files not copied thanks to deduplication
+destEntries|22747|The number of file system entries processed in the destination
+fileCnt|12764|The number of files transfered from the source to the destination
+srcEntries|22748|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 3
+*** Starting run 4
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|921201469|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21875|The number of file system entries processed in the destination
+fileCnt|11832|The number of files transfered from the source to the destination
+srcEntries|21876|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 4
+*** Starting run 5
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|993152445|The number of bytes transfered from the source to the destination
+dedupedBytes|1430162952|The number of bytes not copied thanks to deduplication
+dedupedFiles|2371|The number of files not copied thanks to deduplication
+destEntries|23633|The number of file system entries processed in the destination
+fileCnt|13504|The number of files transfered from the source to the destination
+srcEntries|23634|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 5
+*** Starting run 6
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|1033606028|The number of bytes transfered from the source to the destination
+dedupedBytes|1431193268|The number of bytes not copied thanks to deduplication
+dedupedFiles|2398|The number of files not copied thanks to deduplication
+destEntries|24599|The number of file system entries processed in the destination
+fileCnt|14376|The number of files transfered from the source to the destination
+srcEntries|24600|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 6
+*** Starting run 7
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|912966255|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21568|The number of file system entries processed in the destination
+fileCnt|11732|The number of files transfered from the source to the destination
+srcEntries|21569|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 7
+*** Starting run 8
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|848479604|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21059|The number of file system entries processed in the destination
+fileCnt|11185|The number of files transfered from the source to the destination
+srcEntries|21060|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 8
+*** Starting run 9
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|956832206|The number of bytes transfered from the source to the destination
+dedupedBytes|1430137177|The number of bytes not copied thanks to deduplication
+dedupedFiles|2365|The number of files not copied thanks to deduplication
+destEntries|22738|The number of file system entries processed in the destination
+fileCnt|12615|The number of files transfered from the source to the destination
+srcEntries|22739|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 9
+*** Starting run 10
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|880936292|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21448|The number of file system entries processed in the destination
+fileCnt|11613|The number of files transfered from the source to the destination
+srcEntries|21449|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 10
+*** Starting run 11
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|922246644|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21900|The number of file system entries processed in the destination
+fileCnt|11913|The number of files transfered from the source to the destination
+srcEntries|21901|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 11
+*** Starting run 12
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|1038514086|The number of bytes transfered from the source to the destination
+dedupedBytes|1431193268|The number of bytes not copied thanks to deduplication
+dedupedFiles|2398|The number of files not copied thanks to deduplication
+destEntries|24644|The number of file system entries processed in the destination
+fileCnt|14397|The number of files transfered from the source to the destination
+srcEntries|24645|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 12
+*** Starting run 13
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|843683964|The number of bytes transfered from the source to the destination
+dedupedBytes|1395639108|The number of bytes not copied thanks to deduplication
+dedupedFiles|2358|The number of files not copied thanks to deduplication
+destEntries|20767|The number of file system entries processed in the destination
+fileCnt|11054|The number of files transfered from the source to the destination
+srcEntries|20768|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 13
+*** Starting run 14
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|875379394|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21310|The number of file system entries processed in the destination
+fileCnt|11407|The number of files transfered from the source to the destination
+srcEntries|21311|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 14
+*** Starting run 15
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|922542306|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21893|The number of file system entries processed in the destination
+fileCnt|11974|The number of files transfered from the source to the destination
+srcEntries|21894|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 15
+*** Starting run 16
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 32 workers
+byteCnt|883542744|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21307|The number of file system entries processed in the destination
+fileCnt|11560|The number of files transfered from the source to the destination
+srcEntries|21308|The number of file system entries processed in the source
+
+Stopping 32 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 16
+*** Testing command 'run_shrinkwrap 64 run.log' with 16 runs...
+*** Starting run 1
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|839638533|The number of bytes transfered from the source to the destination
+dedupedBytes|1395639108|The number of bytes not copied thanks to deduplication
+dedupedFiles|2358|The number of files not copied thanks to deduplication
+destEntries|20792|The number of file system entries processed in the destination
+fileCnt|10947|The number of files transfered from the source to the destination
+srcEntries|20793|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 1
+*** Starting run 2
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|984082580|The number of bytes transfered from the source to the destination
+dedupedBytes|1430164775|The number of bytes not copied thanks to deduplication
+dedupedFiles|2372|The number of files not copied thanks to deduplication
+destEntries|23676|The number of file system entries processed in the destination
+fileCnt|13378|The number of files transfered from the source to the destination
+srcEntries|23677|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 2
+*** Starting run 3
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|942530395|The number of bytes transfered from the source to the destination
+dedupedBytes|1430137177|The number of bytes not copied thanks to deduplication
+dedupedFiles|2365|The number of files not copied thanks to deduplication
+destEntries|22503|The number of file system entries processed in the destination
+fileCnt|12390|The number of files transfered from the source to the destination
+srcEntries|22504|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 3
+*** Starting run 4
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|936109649|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|22202|The number of file system entries processed in the destination
+fileCnt|12185|The number of files transfered from the source to the destination
+srcEntries|22203|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 4
+*** Starting run 5
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|966846172|The number of bytes transfered from the source to the destination
+dedupedBytes|1430162057|The number of bytes not copied thanks to deduplication
+dedupedFiles|2367|The number of files not copied thanks to deduplication
+destEntries|22934|The number of file system entries processed in the destination
+fileCnt|12908|The number of files transfered from the source to the destination
+srcEntries|22935|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 5
+*** Starting run 6
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|895382617|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21606|The number of file system entries processed in the destination
+fileCnt|11597|The number of files transfered from the source to the destination
+srcEntries|21607|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 6
+*** Starting run 7
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|927392022|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21964|The number of file system entries processed in the destination
+fileCnt|11932|The number of files transfered from the source to the destination
+srcEntries|21965|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 7
+*** Starting run 8
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|922201026|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21841|The number of file system entries processed in the destination
+fileCnt|11859|The number of files transfered from the source to the destination
+srcEntries|21842|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 8
+*** Starting run 9
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|913677130|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21600|The number of file system entries processed in the destination
+fileCnt|11683|The number of files transfered from the source to the destination
+srcEntries|21601|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 9
+*** Starting run 10
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|821782116|The number of bytes transfered from the source to the destination
+dedupedBytes|1277114778|The number of bytes not copied thanks to deduplication
+dedupedFiles|2331|The number of files not copied thanks to deduplication
+destEntries|20505|The number of file system entries processed in the destination
+fileCnt|10749|The number of files transfered from the source to the destination
+srcEntries|20506|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 10
+*** Starting run 11
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|924219272|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21726|The number of file system entries processed in the destination
+fileCnt|11860|The number of files transfered from the source to the destination
+srcEntries|21727|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 11
+*** Starting run 12
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|883893936|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21369|The number of file system entries processed in the destination
+fileCnt|11493|The number of files transfered from the source to the destination
+srcEntries|21370|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 12
+*** Starting run 13
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|853253403|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21093|The number of file system entries processed in the destination
+fileCnt|11227|The number of files transfered from the source to the destination
+srcEntries|21094|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 13
+*** Starting run 14
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|854673713|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|21122|The number of file system entries processed in the destination
+fileCnt|11296|The number of files transfered from the source to the destination
+srcEntries|21123|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 14
+*** Starting run 15
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|929307728|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|22211|The number of file system entries processed in the destination
+fileCnt|12079|The number of files transfered from the source to the destination
+srcEntries|22212|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 15
+*** Starting run 16
+*** Exporting cernvm-prod.cern.ch
+LibCvmfs version 2.6, revision 26
+Initializing posix interface with its directory structure
+Starting 64 workers
+byteCnt|941234348|The number of bytes transfered from the source to the destination
+dedupedBytes|1430135291|The number of bytes not copied thanks to deduplication
+dedupedFiles|2364|The number of files not copied thanks to deduplication
+destEntries|22355|The number of file system entries processed in the destination
+fileCnt|12370|The number of files transfered from the source to the destination
+srcEntries|22356|The number of file system entries processed in the source
+
+Stopping 64 workers
+Name|Value|Description
+byteCnt|1336661591|The number of bytes transfered from the source to the destination
+dedupedBytes|1615785906|The number of bytes not copied thanks to deduplication
+dedupedFiles|2604|The number of files not copied thanks to deduplication
+destEntries|31341|The number of file system entries processed in the destination
+fileCnt|24141|The number of files transfered from the source to the destination
+srcEntries|31341|The number of file system entries processed in the source
+
+*** Cleaning up run 16
